@@ -8,7 +8,7 @@ import { CRM, DeleteRelation } from "../../User_Management/features/userSlice";
 import { Grid } from "react-loader-spinner";
 import axios from "axios";
 import { Alert, AlertTitle, Button } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
+import cookie from "js-cookie";
 
 // Component inside action column
 const Action = ({
@@ -54,14 +54,22 @@ const Action = ({
   const handleCancelDelete = () => {
     setShowDeleteConfirmation(false);
   };
-  const handleEditClick = () => {
-    console.log("Edit is clicked");
-  };
+
+  const roles = cookie.get("role");
+
   return (
     <div className="w-8 mr-10 h-6 flex gap-3 cursor-pointer">
-      <img src={Edit} onClick={handleEditClick} alt="Delete" />
+      <img
+        src={Edit}
+        // onClick={handleEditClick}
+        alt="Delete"
+      />
       <img src={View} onClick={handleClick} alt="Edit" />
-      <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+      {roles === "admin" || roles === "editor" ? (
+        <>
+          <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+        </>
+      ) : null}
       {showDeleteConfirmation && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-5 rounded shadow">

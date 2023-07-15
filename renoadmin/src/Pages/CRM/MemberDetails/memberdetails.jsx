@@ -127,26 +127,3 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
 };
 
 export default MemberDetails;
-
-{
-  /* <button
-            // onClick={handleExport}
-            href={`http://139.59.236.50:8000/exportmember?usname=${memData.username}&file_format=csv`}
-            className="rounded bg-amber-600 hover:bg-amber-700"
-            style={{
-              position: "absolute",
-              top: "10px",
-              width: "150px",
-              height: "55px",
-              color: "white",
-              marginLeft: "285px",
-              cursor: "pointer !important",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "background-color 0.3s",
-              zIndex: 1,
-            }}>
-            Export Member
-          </button> */
-}
