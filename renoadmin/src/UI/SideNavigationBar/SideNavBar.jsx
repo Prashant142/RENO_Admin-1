@@ -321,7 +321,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Product List
                     </NavLink>
                   </div>
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -336,7 +336,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Featured Product and Services
                     </NavLink>
-                  </div>
+                  </div> */}
                   <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -374,7 +374,63 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setActiveTab("transactionHistory");
                         setExpand("homeService");
                       }}>
-                      Transaction/Purchase History
+                      Order History
+                    </NavLink>
+                  </div>
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
+                          activeTab === "categoryList" ? "black" : "#545e6f",
+                        fontWeight:
+                          activeTab === "categoryList" ? "bold" : "inherit",
+                      }}
+                      to="/home/categoryList"
+                      onClick={() => {
+                        setActiveTab("categoryList");
+                        setExpand("homeService");
+                      }}>
+                      Category List
+                    </NavLink>
+                  </div>
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
+                          activeTab === "productCategoryList"
+                            ? "black"
+                            : "#545e6f",
+                        fontWeight:
+                          activeTab === "productCategoryList"
+                            ? "bold"
+                            : "inherit",
+                      }}
+                      to="/home/productCategoryList"
+                      onClick={() => {
+                        setActiveTab("productCategoryList");
+                        setExpand("homeService");
+                      }}>
+                      Product Category List
+                    </NavLink>
+                  </div>
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
+                          activeTab === "serviceCategoryList"
+                            ? "black"
+                            : "#545e6f",
+                        fontWeight:
+                          activeTab === "serviceCategoryList"
+                            ? "bold"
+                            : "inherit",
+                      }}
+                      to="/home/serviceCategoryList"
+                      onClick={() => {
+                        setActiveTab("serviceCategoryList");
+                        setExpand("homeService");
+                      }}>
+                      Service Category List
                     </NavLink>
                   </div>
                   <div className="ml-7 mt-2">
@@ -513,7 +569,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setActiveTab("catagoryManagement");
                         setExpand("marketPlace");
                       }}>
-                      Catagory Management
+                      Category Management
                     </NavLink>
                   </div>
                   <div className="ml-7 mt-2">

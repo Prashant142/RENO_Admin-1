@@ -10,21 +10,18 @@ import { Grid } from "react-loader-spinner";
 import { DeleteProduct } from "../../User_Management/features/userSlice";
 import { Alert, AlertTitle, Button } from "@mui/material";
 
-const Action = ({ prodId, prodName, category, productcategory, inv, pack, purchaseditem, details }) => {
+const Action = ({ prodId, prodName, category, pic_url }) => {
   const Navigate = useNavigate();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const handleClick = () => {
-    const data={
+    const data = {
       name: prodName,
       category: category,
-      productcategory: productcategory,
-      inv: inv,
-      pack: pack,
-      purchaseditem:purchaseditem,
-      details: details
-    }
-    Navigate("/home/editProduct", {state:data});
+      prodId: prodId,
+      pic_url: pic_url,
+    };
+    Navigate("/home/editProduct", { state: data });
   };
   const dispatch = useDispatch();
   const handleDeleteClick = () => {
@@ -100,19 +97,43 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
-      await dispatch(HSM_allProduct());
+      dispatch(HSM_allProduct());
       setLoading(false);
     };
     fetchUserData();
   }, [dispatch]);
 
+  // For now here is the dummy data
+  const Info = () => {
+    return (
+      <div>
+        <div className="flex flex-row">
+          <label className="text-lime-700">No of Sale : </label>
+          <p>&nbsp; 0 times</p>
+        </div>
+        <div className="flex flex-row">
+          <label className="text-lime-700">Base Price : </label>
+          <p>&nbsp; 5</p>
+        </div>
+        <div className="flex flex-row">
+          <label className="text-lime-700">Rating : </label>
+          <p>&nbsp; 3</p>
+        </div>
+      </div>
+    );
+  };
+
   const columns = [
+    {
+      header: "S No.",
+      accessor: "serialno",
+    },
     {
       header: "Photo",
       accessor: "photo",
     },
     {
-      header: "Product Name",
+      header: "Name",
       accessor: "productname",
     },
     {
@@ -120,20 +141,12 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
       accessor: "category",
     },
     {
-      header: "Product Category",
-      accessor: "productcategory",
+      header: "Product Id",
+      accessor: "productid",
     },
     {
-      header: "Inventory",
-      accessor: "inventory",
-    },
-    {
-      header: "Package",
-      accessor: "package",
-    },
-    {
-      header: "Purchased Item",
-      accessor: "purchaseditem",
+      header: "Info",
+      accessor: "information",
     },
     {
       header: "Action",
@@ -142,23 +155,20 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
   ];
   console.log(productData);
   const data = productData.map((user) => ({
+    serialno: "1",
     photo: <Photo picUrl={user.fields.pic_url} />,
     productname: user.fields.name,
     category: user.fields.category,
-    productcategory: user.fields.proj_category,
-    inventory: `${user.fields.rate} items`,
-    package: `$${user.fields.inv_count}`,
-    purchaseditem: `${user.fields.net_purchase_item_count} items`,
-    action:       <Action
-    prodId={user.pk}
-    prodName={user.fields.name}
-    category={user.fields.category}
-    productcategory={user.fields.proj_category}
-    inv={user.fields.inv_count}
-    pack={user.fields.rate}
-    purchaseditem={user.fields.net_purchase_item_count}
-    details={user.fields.details}
-  />,
+    productid: "148869876898",
+    information: <Info />,
+    action: (
+      <Action
+        pic_url={user.pic}
+        prodId={user.pk}
+        prodName={user.fields.name}
+        category={user.fields.category}
+      />
+    ),
   }));
 
   const blackButtonText = "Export All";

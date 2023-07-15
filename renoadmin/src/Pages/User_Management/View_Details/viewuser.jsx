@@ -3,6 +3,7 @@ import TopHeader from "../../../UI/TopHeader/TopHeader";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import { useLocation } from "react-router-dom";
+import Table from "../../../UI/CommonTable/Table";
 
 const ViewUser = ({ setActiveTab, setExpand }) => {
   setExpand("userManagement");
@@ -10,6 +11,10 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
   const location = useLocation();
   const user = location.state;
   const head = "User Details";
+  function onTopupClicked() {
+    console.log("Top up clicked");
+  }
+
   return (
     <div>
       <div className="flex" style={{ zIndex: "100" }}>
@@ -30,7 +35,12 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
             }}>
             <img
-              style={{ width: "150px", marginLeft: "10px", marginTop: "10px", height: "160px" }}
+              style={{
+                width: "150px",
+                marginLeft: "10px",
+                marginTop: "10px",
+                height: "160px",
+              }}
               src={user.photo}
               alt=""
             />
@@ -52,96 +62,105 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
             </div>
           </div>
         </div>
-        <div
-          className="grid grid-cols-3"
-          style={{ gap: "150px", marginTop: "10px" }}>
-          <div>
-            <div
-              className="text-gray-500"
-              style={{ marginLeft: "20px", fontSize: "13px" }}>
-              Name
-            </div>
-            <div
-              className=""
-              style={{
-                marginLeft: "20px",
-                fontWeight: "bold",
-                fontSize: "15px",
-              }}>
-              {user.username}
-            </div>
-          </div>
-          <div>
-            <div
-              className="text-gray-500"
-              style={{ marginLeft: "20px", fontSize: "13px" }}>
-              Phone No.
-            </div>
-            <div
-              className=""
-              style={{
-                marginLeft: "20px",
-                fontWeight: "bold",
-                fontSize: "15px",
-              }}>
-              +65 {user.phone}
-            </div>
-          </div>
-          <div>
-            <div
-              className="text-gray-500"
-              style={{ marginLeft: "20px", fontSize: "13px" }}>
-              Email Address
-            </div>
-            <div
-              className=""
-              style={{
-                marginLeft: "20px",
-                fontWeight: "bold",
-                fontSize: "15px",
-              }}>
-              {user.email}
-            </div>
-          </div>
-        </div>
-        <div style={{ marginTop: "70px", position: "absolute", left: "270px" }}>
+        <div>
           <div
-            className="text-gray-500"
-            style={{ marginLeft: "-75px", fontSize: "13px" }}>
-            Address
+            className="grid grid-cols-2 mb-10"
+            style={{ gap: "150px", marginTop: "10px" }}>
+            <div>
+              <div
+                className="text-gray-500"
+                style={{ marginLeft: "20px", fontSize: "13px" }}>
+                Name
+              </div>
+              <div
+                className=""
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}>
+                {user.username}
+              </div>
+            </div>
+            <div>
+              <div
+                className="text-gray-500"
+                style={{ marginLeft: "20px", fontSize: "13px" }}>
+                Phone No.
+              </div>
+              <div
+                className=""
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}>
+                +65 {user.phone}
+              </div>
+            </div>
           </div>
           <div
-            className=""
-            style={{
-              marginLeft: "-75px",
-              fontWeight: "bold",
-              fontSize: "15px",
-            }}>
-            abc, Singapore
+            className="grid grid-cols-2 mb-10"
+            style={{ gap: "150px", marginTop: "10px" }}>
+            <div>
+              <div
+                className="text-gray-500"
+                style={{ marginLeft: "20px", fontSize: "13px" }}>
+                Email Address
+              </div>
+              <div
+                className=""
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}>
+                {user.email}
+              </div>
+            </div>
+            <div>
+              <div
+                className="text-gray-500"
+                style={{ marginLeft: "20px", fontSize: "13px" }}>
+                Address
+              </div>
+              <div
+                className=""
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}>
+                {/* {user.address} */}
+                This is address field
+              </div>
+            </div>
           </div>
-        </div>
-        <div
-          style={{ marginTop: "140px", position: "absolute", left: "270px" }}>
           <div
-            className="text-gray-500"
-            style={{ marginLeft: "-75px", fontSize: "13px" }}>
-            About User
-          </div>
-          <div
-            className=""
-            style={{
-              marginLeft: "-75px",
-              fontWeight: "bold",
-              fontSize: "15px",
-            }}>
-            {user.about}
+            className="grid grid-cols-2"
+            style={{ gap: "150px", marginTop: "10px" }}>
+            <div>
+              <div
+                className="text-gray-500"
+                style={{ marginLeft: "20px", fontSize: "13px" }}>
+                About User
+              </div>
+              <div
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}>
+                {/* {user.about} */}
+                This is about user section.
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      {/* Order History */}
       <div className="ml-72" style={{ marginTop: "20px", zIndex: -1 }}>
-        <div style={{ fontWeight: "bolder", fontSize: "17px" }}>
-          Purchased Products
-        </div>
+        <div className="font-bold text-3xl pt-10 pb-5">Purchased Products</div>
         <div className="grid grid-cols-4 gap-6">
           <div
             style={{
