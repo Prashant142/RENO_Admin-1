@@ -19,14 +19,11 @@ function Table({
     )
   );
 
-  const pageCount = Math.ceil(filteredData.length / pageSize);
+  const paginatedData = pageSize
+    ? filteredData.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+    : filteredData;
 
-  const paginatedData = filteredData.slice(
-    currentPage * pageSize,
-    (currentPage + 1) * pageSize
-  );
-
-  const showPagination = data.length > 0 && filteredData.length > 0;
+  const pageCount = pageSize ? Math.ceil(filteredData.length / pageSize) : 1;
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -83,7 +80,7 @@ function Table({
           <thead className="h-10">
             <tr className="bg-[#2B2B2B] text-white">
               {columns.map((column) => (
-                <th key={column.accessor} className="px-5 py-5 border-b ">
+                <th key={column.accessor} className="px-5 py-5 border-b">
                   {column.header}
                 </th>
               ))}
@@ -105,7 +102,7 @@ function Table({
             ))}
           </tbody>
         </table>
-        {showPagination ? (
+        {pageSize && (
           <div className="pagination absolute left-0 right-0 flex justify-end p-5 gap-3">
             <button
               className={`px-4 border-2 rounded-md ${
@@ -131,15 +128,10 @@ function Table({
               Next {">"}
             </button>
           </div>
-        ) : null}
+        )}
       </div>
     </>
   );
 }
 
 export default Table;
-
-// At the time of API :
-// 1 . Save the API data in a useState function.
-// 2 . Then use the data from the state variable.
-// 3 . Make the columns object in the component you want to call the "Table UI".

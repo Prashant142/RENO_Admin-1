@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../../UI/CommonTable/Table";
-import { deleteIcon, Photo, View } from "./Assets/index";
+import { deleteIcon, Photo, View, Edit } from "./Assets/index";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { Grid } from "react-loader-spinner";
 import axios from "axios";
 import { Alert, AlertTitle, Button } from "@mui/material";
 import cookie from "js-cookie";
-
 
 // Component inside action column
 const Action = ({
@@ -56,15 +55,20 @@ const Action = ({
     setShowDeleteConfirmation(false);
   };
 
-  const roles = cookie.get('role');
+  const roles = cookie.get("role");
 
   return (
-    <div className="w-6 h-6 flex gap-3 cursor-pointer">
+    <div className="w-8 mr-10 h-6 flex gap-3 cursor-pointer">
+      <img
+        src={Edit}
+        // onClick={handleEditClick}
+        alt="Delete"
+      />
       <img src={View} onClick={handleClick} alt="Edit" />
       {roles === "admin" || roles === "editor" ? (
         <>
-      <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
-      </>
+          <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+        </>
       ) : null}
       {showDeleteConfirmation && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
@@ -170,6 +174,7 @@ const Allmembers = ({ setActiveTab }) => {
 
   const pageSize = 10;
   const greenButtonText = "Export All";
+  const blackButtonText = "Add Members";
 
   // const handleButtonClick = () => {
   //   axios.get('http://139.59.236.50:8000/exportcustomers')
@@ -179,6 +184,10 @@ const Allmembers = ({ setActiveTab }) => {
   //     console.log('Error to call API', err)
   //   })
   // }
+  const navigate = useNavigate();
+  const blackClicked = () => {
+    navigate("/home/addMembers");
+  };
 
   return (
     <div>
@@ -210,6 +219,8 @@ const Allmembers = ({ setActiveTab }) => {
                 {greenButtonText}
               </a>
             }
+            blackButtonText={blackButtonText}
+            blackClicked={blackClicked}
           />
         ) : (
           <>
@@ -222,6 +233,8 @@ const Allmembers = ({ setActiveTab }) => {
                   {greenButtonText}
                 </a>
               }
+              blackButtonText={blackButtonText}
+              blackClicked={blackClicked}
             />
             <div className="flex ml-5 justify-center w-full mt-40">
               <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>

@@ -44,44 +44,61 @@ const Purchases = ({ setActiveTab, setExpand }) => {
     fetchUserData();
   }, [dispatch]);
 
+  const Options = () => {
+    return (
+      <button
+        className="bg-blue-500 px-2 py-2 rounded-l text-white coursor-pointer hover:bg-blue-600"
+        // onClick={viewOrder}
+      >
+        View Order
+      </button>
+    );
+  };
+
   const columns = [
     {
-      header: "Photo",
-      accessor: "photo",
+      header: "S No.",
+      accessor: "serialno",
     },
     {
-      header: "Product Name",
-      accessor: "productname",
+      header: "Date",
+      accessor: "date",
     },
     {
-      header: "Date / Time",
-      accessor: "datetime",
+      header: "Num of Products",
+      accessor: "productcount",
     },
     {
-      header: "Supplier",
-      accessor: "supplier",
-    },
-    {
-      header: "Discription",
-      accessor: "discription",
+      header: "Customer",
+      accessor: "customer",
     },
     {
       header: "Amount",
       accessor: "amount",
     },
-    // {
-    //   header: "Action",
-    //   accessor: "action",
-    // },
+    {
+      header: "Delivery Status",
+      accessor: "delivery",
+    },
+    {
+      header: "Payment Status",
+      accessor: "paymentstatus",
+    },
+    {
+      header: "Options",
+      accessor: "options",
+    },
   ];
 
   const data = transactionData.map((user) => ({
-    photo: <Photo picUrl={user.fields.pic_url} />,
-    productname: user.fields.prod_name,
-    datetime: user.fields.datetime,
-    supplier: user.fields.user,
-    discription: user.fields.desc,
-    amount: `$${user.fields.amt}`,
+    serialno: 1,
+    date: "13-Jun-2023 03:43 am",
+    productcount: 2,
+    customer: "johnaverps averps",
+    amount: "$ 122",
+    delivery: "Pending",
+    paymentstatus: "Unpaid",
+    options: <Options />,
     // action: <Action />,
   }));
 

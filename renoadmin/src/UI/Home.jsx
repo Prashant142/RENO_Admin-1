@@ -50,6 +50,11 @@ import CreateUser from "../Pages/User_Management/Create_User/createUser";
 import EditPage from "../Pages/Content_Management/EditPage/editPage";
 import cookie from "js-cookie";
 import EditPromotion from "../Pages/HSM/EditPromotion/editPromotion";
+import AddMembers from "../Pages/CRM/AddMembers/addMembers";
+import Vieworder from "../Pages/CRM/MemberDetails/Vieworder.jsx";
+import CategoryList from "../Pages/HSM/CategoryList/categorylist.jsx";
+import ProductCategory from "../Pages/HSM/ProductCategory/productCategory.jsx";
+import ServiceCategory from "../Pages/HSM/ServiceCategory/serviceCategory.jsx";
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -74,7 +79,7 @@ function Home() {
 
   return (
     <div className="flex">
-      {cookie.get('jwt') && (
+      {cookie.get("jwt") && (
         <>
           <SideNavBar
             expand={expand}
@@ -99,6 +104,56 @@ function Home() {
               path="/bookings"
               element={
                 <ProjectBooking
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/categoryList"
+              element={
+                <CategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/productCategoryList"
+              element={
+                <ProductCategory
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/serviceCategoryList"
+              element={
+                <ServiceCategory
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/viewOrder"
+              element={
+                <Vieworder
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addMembers"
+              element={
+                <AddMembers
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
@@ -155,15 +210,15 @@ function Home() {
               }
             />
             <Route
-          exact
-          path="/editPromotion"
-          element={
-            <EditPromotion
-              setExpand={togleExpand}
-              setActiveTab={handleActiveTab}
+              exact
+              path="/editPromotion"
+              element={
+                <EditPromotion
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
             />
-          }
-        />
             <Route
               exact
               path="/editPage"
