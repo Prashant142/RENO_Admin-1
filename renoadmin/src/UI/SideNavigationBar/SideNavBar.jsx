@@ -437,6 +437,22 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                     <NavLink
                       style={{
                         color:
+                          activeTab === "servicePackageList" ? "black" : "#545e6f",
+                        fontWeight:
+                          activeTab === "servicePackageList" ? "bold" : "inherit",
+                      }}
+                      to="/home/servicePackageList"
+                      onClick={() => {
+                        setActiveTab("servicePackageList");
+                        setExpand("homeService");
+                      }}>
+                      Service Package List
+                    </NavLink>
+                  </div>
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
                           activeTab === "reviewManagement"
                             ? "black"
                             : "#545e6f",

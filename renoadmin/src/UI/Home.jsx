@@ -55,6 +55,9 @@ import Vieworder from "../Pages/CRM/MemberDetails/Vieworder.jsx";
 import CategoryList from "../Pages/HSM/CategoryList/categorylist.jsx";
 import ProductCategory from "../Pages/HSM/ProductCategory/productCategory.jsx";
 import ServiceCategory from "../Pages/HSM/ServiceCategory/serviceCategory.jsx";
+import ServicePackageList from "../Pages/HSM/ServicePackage/servicePackage";
+import AddNewServicePackage from "../Pages/HSM/ServicePackage/addServicePackage";
+import EditServicePackage from "../Pages/HSM/ServicePackage/editServicePackage";
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -114,6 +117,26 @@ function Home() {
               path="/categoryList"
               element={
                 <CategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/servicePackageList"
+              element={
+                <ServicePackageList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addNewServicePackageList"
+              element={
+                <AddNewServicePackage
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
@@ -415,6 +438,16 @@ function Home() {
               path="/editCategory"
               element={
                 <EditCategory
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editServicePackage"
+              element={
+                <EditServicePackage
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

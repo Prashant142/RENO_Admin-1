@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Product_price = () => {
+const Product_price = (prop) => {
+  // let [selectedvalue, setSelectedValue] = useState('');
+  let [heading, setHeading] = useState('Product');
+  useEffect(() => {
+    if (prop.checkedcat == 'prodcat') {
+      setHeading('Product');
+      document.getElementById('product-details').style.display = 'block';
+    }
+    else if (prop.checkedcat == 'servcat') {
+      setHeading('Service')
+      document.getElementById('product-details').style.display = 'none';
+    }
+    else {
+      setHeading('Product');
+      document.getElementById('product-details').style.display = 'block';
+    }
+  }, [prop])
+
   return (
     <div>
       <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border w-[80vh]">
-        <p className="pb-5">Product Information</p>
+        <p className="pb-5">{heading} Information</p>
         <hr />
         <form className="pt-5" action="submit">
           <div className="flex flex-col gap-5">
@@ -15,44 +32,47 @@ const Product_price = () => {
                 type="text"
               />
             </div>
-            <div className="flex flex-row justify-between">
-              <label>Discount Date Range : </label>
-              <input
-                className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-row justify-between">
-              <label>Discount :</label>
-              <div className="flex flex-row gap-5">
+            <div id="product-details">
+              <div className="flex flex-row justify-between">
+                <label>Discount Date Range : </label>
                 <input
-                  className="px-4 py-2 drop-shadow-md rounded-md w-full"
+                  className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
                   type="text"
                 />
-                <select
-                  name="discount"
-                  className="rounded-md drop-shadow-md px-5 w-48"
-                  id="">
-                  <option value="amount">Amount</option>
-                  <option value="percent">Percent</option>
-                </select>
+              </div>
+              <div className="flex flex-row mt-5 justify-between">
+                <label>Discount :</label>
+                <div className="flex flex-row gap-5">
+                  <input
+                    className="px-4 py-2 drop-shadow-md rounded-md w-full"
+                    type="text"
+                  />
+                  <select
+                    name="discount"
+                    className="rounded-md drop-shadow-md px-5 w-48"
+                    id="">
+                    <option value="amount">Amount</option>
+                    <option value="percent">Percent</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex flex-row mt-5 justify-between">
+                <label>Quantity :</label>
+                <input
+                  className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
+                  type="text"
+                />
+              </div>
+              <div className="flex flex-row mt-5 justify-between">
+                <label>SKU :</label>
+                <input
+                  className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
+                  type="text"
+                />
               </div>
             </div>
-            <div className="flex flex-row justify-between">
-              <label>Quantity :</label>
-              <input
-                className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-row justify-between">
-              <label>SKU :</label>
-              <input
-                className="px-4 py-2 drop-shadow-md rounded-md w-2/3"
-                type="text"
-              />
-            </div>
           </div>
+
         </form>
       </div>
     </div>

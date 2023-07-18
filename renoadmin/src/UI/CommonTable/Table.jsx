@@ -105,24 +105,21 @@ function Table({
         {pageSize && (
           <div className="pagination absolute left-0 right-0 flex justify-end p-5 gap-3">
             <button
-              className={`px-4 border-2 rounded-md ${
-                currentPage === 0
+              className={`px-4 border-2 rounded-md ${currentPage === 0
                   ? "bg-[#DDDEF9] text-gray-500 cursor-default"
                   : "bg-white text-gray-700 "
-              }`}
+                }`}
               disabled={currentPage === 0}
               onClick={handlePreviousPage}>
               {"<"} Prev
             </button>
-            <span className="px-4 py-2">{`${
-              currentPage + 1
-            } - ${pageCount}`}</span>
+            <span className="px-4 py-2">{`${currentPage + 1
+              } - ${pageCount}`}</span>
             <button
-              className={`px-4 border-2 rounded-md ${
-                currentPage === pageCount - 1
+              className={`px-4 border-2 rounded-md ${currentPage === pageCount - 1
                   ? "bg-[#DDDEF9] text-gray-500 cursor-default"
                   : "bg-white text-gray-700"
-              }`}
+                }`}
               disabled={currentPage === pageCount - 1}
               onClick={handleNextPage}>
               Next {">"}

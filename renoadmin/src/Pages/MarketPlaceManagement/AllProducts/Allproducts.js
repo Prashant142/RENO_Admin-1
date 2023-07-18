@@ -162,7 +162,7 @@ const AllProducts = ({ setActiveTab, setExpand }) => {
           />
         </div>
       ) : null}
-      <div className=" ml-72 mt-28 h-[85vh] min-w-[135%] relative">
+      <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
         {productData.length > 0 ? (
           <Table
             columns={columns}

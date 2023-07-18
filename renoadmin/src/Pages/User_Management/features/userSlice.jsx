@@ -159,6 +159,30 @@ export const addNewCategory = createAsyncThunk(
   }
 );
 
+export const addNewServicePackage = createAsyncThunk(
+  "addNewServicePackage",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://139.59.236.50:8000/addNewServicePackage",
+        data: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          // "X-CSRFToken": csrfToken,
+        },
+      });
+      console.log(...formData);
+      alert("Data created successfully");
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      alert("Operation failed");
+      console.log("Not submitting data");
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 export const addNewListing = createAsyncThunk(
   "addNewListing",
   async (formData, { rejectWithValue }) => {
@@ -309,6 +333,30 @@ export const updateCategory = createAsyncThunk(
       const response = await axios({
         method: "put",
         url: `http://139.59.236.50:8000/editcategory?prod_category=${title}`, // Change the End points
+        data: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          // "X-CSRFToken": csrfToken,
+        },
+      });
+      console.log(response);
+      alert("Data updated successfully");
+    } catch (error) {
+      alert("Operation failed");
+      console.log("Not submitting data", error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+
+export const updateServicePackage = createAsyncThunk(
+  "updateServicePackage",
+  async ({ formData, title }, { rejectWithValue }) => {
+    try {
+      const response = await axios({
+        method: "put",
+        url: `http://139.59.236.50:8000/editservicePackage?prod_servicePackage=${title}`, // Change the End points
         data: formData,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",

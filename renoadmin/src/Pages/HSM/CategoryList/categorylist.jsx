@@ -73,10 +73,10 @@ const CategoryList = ({ setActiveTab, setExpand }) => {
   const head = "Category List";
   setExpand("homeService");
   setActiveTab("categoryList");
-  //   const Navigate = useNavigate();
-  // //   const greenClicked = () => {
-  // //     Navigate("/home/addNewCategory");
-  // //   };
+  const Navigate = useNavigate();
+  //   const greenClicked = () => {
+  //     Navigate("/home/addNewCategory");
+  //   };
 
   //   const dispatch = useDispatch();
   //   const [loading, setLoading] = useState(true);
