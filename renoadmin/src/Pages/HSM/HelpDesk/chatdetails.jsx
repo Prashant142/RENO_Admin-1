@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import Cookies from "js-cookie";
+import CloseIcon from '@mui/icons-material/Close';
 
 const Chatdetails = ({ onClose, name, status, tid }) => {
 
@@ -20,7 +21,7 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
     const year = String(currentDate.getFullYear());
     return `${day}-${month}-${year}`;
   };
-  
+
   const getCurrentTime = () => {
     const currentDate = new Date();
     const hours = String(currentDate.getHours()).padStart(2, "0");
@@ -28,9 +29,9 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
     const seconds = String(currentDate.getSeconds()).padStart(2, "0");
     return `${hours}:${minutes}:${seconds}`;
   };
-  
 
-  
+
+
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -96,7 +97,7 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
     } catch (error) {
       console.log("Failed");
       console.log(error);
-    
+
     }
   }
 
@@ -110,13 +111,13 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
         date: getCurrentDate(), // Helper function to get the current date
         time: getCurrentTime(), // Helper function to get the current time
       };
-      
+
       const response = await axios.post("http://139.59.236.50:5002/replyticket", body); // Replace "{{chatUrl}}" with the actual chat URL
-  
+
       // Extract the message data from the response
       const { success, data } = response.data;
       const { cid, msg, date, time, role } = data;
-  
+
       if (success) {
         // Create a new message object
         const newMessage = {
@@ -126,12 +127,17 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
           time: time,
           role: role,
         };
-  
+
         // Update the messages state with the new message
         setMessages((prevMessages) => [...prevMessages, newMessage]);
-  
+
         // Clear the input value
+        let scroller = document.getElementById('chat-scroller');
         setInputValue("");
+        setTimeout(() => {
+
+          scroller.scrollTo(0, scroller.scrollHeight);
+        }, 500);
       }
     } catch (error) {
       console.log("Failed to reply", error);
@@ -146,213 +152,134 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
         width: "25rem",
         height: "75vh",
         right: "0px",
-        bottom: "0px",
+        bottom: "20px",
         background: "#FFFFFF",
-        boxShadow: "0px 4px 50px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+        borderRadius: '10px',
       }}
-      className="pr-10"
+      className=" pb-10"
     >
-      <div className="flex justify-between ml-3 mr-3 mt-5">
-        <div className="font-bold">Chat Details</div>
-        <button style={{marginRight:108}} onClick={handleCloseTicket} className="rounded-sm px-1 py-0.5 text-xs text-white bg-red-400 hover:bg-red-700">
-          Close Conversation
-        </button>
-        <button onClick={handleClose} className="font-bold" style={{position:"fixed", right:0, marginRight:10}}>
-          X
-        </button>
-      </div>
-
-      <div className="ml-3 mr-3">
-        <div className="flex h-20 items-center cursor-pointer" style={{}}>
-          <img
-            src="/images/profile.jpg"
-            alt=""
-            style={{
-              height: "45px",
-              marginRight: "15px",
-              borderRadius: "50px",
-            }}
-          />
-          <div>
-            <div className="text-sm font-bold">{name}</div>
-            <div className="text-xs text-gray-500 ">Status: {status}</div>
+      <div className="h-full overflow-y-auto scrollbar-hide" id='chat-scroller'>
+        <div className="bg-white sticky top-0">
+          <div className="flex justify-between px-3 pt-5">
+            <div className="flex gap-3">
+              <div className="font-bold">Chat Details</div>
+              <button onClick={handleCloseTicket} className="rounded-full px-2 py-0.5 text-xs text-white bg-red-400 hover:bg-red-700">
+                Close Conversation
+              </button>
+            </div>
+            <div>
+              <CloseIcon onClick={handleClose} className="font-bold cursor-pointer">
+              </CloseIcon>
+            </div>
           </div>
+
+          <div className="pl-3 pr-3 py-2">
+            <div className="flex items-center " style={{}}>
+              <img
+                src="/images/profile.jpg"
+                alt=""
+                style={{
+                  height: "45px",
+                  marginRight: "15px",
+                  borderRadius: "50px",
+                }}
+              />
+              <div>
+                <div className="text-sm font-bold">{name}</div>
+                <div className="text-xs text-gray-500 ">Status: {status}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="p-3 "
+          style={{
+            height: "100%",
+          }}
+        >
+          {/* Backend Side Messages */}
+          {messages.map((message, index) => {
+            if (message.role === "user") {
+              return (
+                <div key={index} style={{ width: "80%", paddingBottom: "15px" }}>
+                  <div
+                    className="flex items-center"
+                    style={{
+                      backgroundColor: "#8FC743",
+                      color: "white",
+                      borderRadius: "6px",
+                      fontSize: "14px",
+                      paddingLeft: "10px",
+                      boxSizing: "border-box",
+                      wordWrap: "break-word",
+                      paddingRight: "10px",
+                      paddingTop: "7px",
+                      paddingBottom: "7px",
+                      width: "fit-content",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {message.msg}
+                  </div>
+                  <div
+                    className="text-gray-500"
+                    style={{ fontSize: "12px", paddingLeft: "8px" }}
+                  >
+                    {message.time} / {message.date}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
+
+          {/* Frontend Side Messages */}
+          {messages.map((message, index) => {
+            if (message.role === "admin") {
+              return (
+                <div key={index} className="ms-auto" style={{ width: "80%", paddingBottom: "10px" }}>
+                  <div
+                    className="flex items-center ms-auto justify-end"
+                    style={{
+                      backgroundColor: "#2B2B2B",
+                      color: "white",
+                      borderRadius: "6px",
+                      fontSize: "14px",
+                      paddingLeft: "10px",
+                      boxSizing: "border-box",
+                      wordWrap: "break-word",
+                      paddingRight: "10px",
+                      paddingTop: "7px",
+                      paddingBottom: "7px",
+                      width: "fit-content",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {message.msg}
+                  </div>
+                  <div
+                    className="text-gray-500 ms-auto text-right"
+                    style={{
+                      fontSize: "12px",
+                    }}
+                  >
+                    {message.time} / {message.date}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
+
+
+
         </div>
       </div>
-
-      {/* <div
-        className="ml-3 mr-3 overflow-auto scrollbar-hide"
-        style={{
-          height: "550px",
-          width: "380px",
-          overflowX: "hidden",
-          overflowY: "scroll",
-        }}
-      >
-        <div style={{ width: "200px", paddingBottom: "15px" }}>
-          <div
-            className="flex items-center"
-            style={{
-              backgroundColor: "#8FC743",
-              color: "white",
-              borderRadius: "13px",
-              fontSize: "14px",
-              paddingLeft: "7px",
-              width: "100%",
-              boxSizing: "border-box",
-              wordWrap: "break-word",
-              paddingRight: "7px",
-              paddingTop: "7px",
-              paddingBottom: "7px",
-              width: "fit-content",
-              marginBottom: "5px",
-            }}
-          >
-            Backend Side Messages
-          </div>
-          <div
-            className="text-gray-500"
-            style={{ fontSize: "12px", paddingLeft: "8px" }}
-          >
-            8:30 am
-          </div>
-        </div>
-
-        <div style={{ width: "200px", paddingBottom: "70px" }}>
-          <div
-            className="flex items-center"
-            style={{
-              backgroundColor: "#2B2B2B",
-              color: "white",
-              borderRadius: "13px",
-              fontSize: "14px",
-              paddingLeft: "7px",
-              width: "100%",
-              boxSizing: "border-box",
-              wordWrap: "break-word",
-              paddingRight: "7px",
-              paddingTop: "7px",
-              paddingBottom: "7px",
-              width: "fit-content",
-              marginBottom: "5px",
-              position: "absolute",
-              right: 20,
-            }}
-          >
-            Frontend Side Messages
-          </div>
-          <div
-            className="text-gray-500"
-            style={{
-              fontSize: "12px",
-              paddingLeft: "100px",
-              paddingTop: "40px",
-              position: "absolute",
-              right: 25,
-            }}
-          >
-            8:30 am
-          </div>
-        </div>
-      </div> */}
-
-
-<div
-  className="ml-3 mr-3 overflow-auto scrollbar-hide"
-  style={{
-    height: "550px",
-    width: "380px",
-    overflowX: "hidden",
-    overflowY: "scroll",
-  }}
->
-  {/* Backend Side Messages */}
-  {messages.map((message, index) => {
-    if (message.role === "user") {
-      return (
-        <div key={index} style={{ width: "200px", paddingBottom: "15px" }}>
-          <div
-            className="flex items-center"
-            style={{
-              backgroundColor: "#8FC743",
-              color: "white",
-              borderRadius: "13px",
-              fontSize: "14px",
-              paddingLeft: "7px",
-              width: "100%",
-              boxSizing: "border-box",
-              wordWrap: "break-word",
-              paddingRight: "7px",
-              paddingTop: "7px",
-              paddingBottom: "7px",
-              width: "fit-content",
-              marginBottom: "5px",
-            }}
-          >
-            {message.msg}
-          </div>
-          <div
-            className="text-gray-500"
-            style={{ fontSize: "12px", paddingLeft: "8px" }}
-          >
-            {message.time}
-          </div>
-        </div>
-      );
-    }
-    return null;
-  })}
-
-  {/* Frontend Side Messages */}
-  {messages.map((message, index) => {
-    if (message.role === "admin") {
-      return (
-        <div key={index} style={{ width: "200px", paddingBottom: "70px" }}>
-          <div
-            className="flex items-center"
-            style={{
-              backgroundColor: "#2B2B2B",
-              color: "white",
-              borderRadius: "13px",
-              fontSize: "14px",
-              paddingLeft: "7px",
-              width: "100%",
-              boxSizing: "border-box",
-              wordWrap: "break-word",
-              paddingRight: "7px",
-              paddingTop: "7px",
-              paddingBottom: "7px",
-              width: "fit-content",
-              marginBottom: "5px",
-              position: "absolute",
-              right: 20,
-            }}
-          >
-            {message.msg}
-          </div>
-          <div
-            className="text-gray-500"
-            style={{
-              fontSize: "12px",
-              paddingLeft: "100px",
-              paddingTop: "40px",
-              position: "absolute",
-              right: 25,
-            }}
-          >
-            {message.time}
-          </div>
-        </div>
-      );
-    }
-    return null;
-  })}
-</div>
-
-
       <div
-        className="ml-3 mr-3 flex justify-between items-center"
-        style={{ position: "absolute", bottom: 20 }}
+        className="p-3 bg-white flex justify-between items-center"
+        style={{ position: "sticky", bottom: 0 }}
       >
         <input
           className="bg-gray-200"
@@ -370,7 +297,7 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
           value={inputValue}
         />
         <button
-          className="ml-4 rounded-full flex items-center justify-center bg-black"
+          className="ms-4 p-5 rounded-full flex items-center justify-center bg-black cursor-pointer"
           style={{
             border: "1px solid",
             height: "30px",
@@ -380,10 +307,12 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
           disabled={isInputDisabled}
           onClick={handleSendMessage}
         >
-          <SendIcon />
+          <SendIcon className="ms-0.5" />
         </button>
       </div>
     </div>
+
+
   );
 };
 

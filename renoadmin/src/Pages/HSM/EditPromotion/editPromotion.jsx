@@ -39,7 +39,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
       formData.append(`pic`, image);
     });
 
-    dispatch(editNewPromotion({formData, title}));
+    dispatch(editNewPromotion({ formData, title }));
     console.log("Back")
     navigate('/home/promotionManagement')
   };
@@ -61,53 +61,53 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
   };
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className=" ml-80 mb-10 relative" style={{ marginTop: "120px" }}>
+      <div className=" relative">
         <form onSubmit={handleSubmit}>
 
           <div className="grid grid-cols-2 w-[98vh] gap-5 mt-5">
-          <label className="grid mt-5">
-            Promotion Id
-            <input
-              type="text"
-              placeholder="Enter Promotion Id"
-              id="title"
-              className="rounded w-[50vh] outline-none"
-              style={{
-                height: "50px",
-                paddingLeft: "10px",
-                backgroundColor: "#e5ecff",
-                marginTop: "5px",
-                fontSize: "15px",
-              }}
-              value={id}
-              onChange={(event) => setId(event.target.value)}
-              required
-            />
-          </label>
-          <label className="grid mt-5">
-            Promotion Title
-            <input
-              type="text"
-              placeholder="Enter Promotion Title"
-              id="title"
-              className="rounded w-[50vh] outline-none"
-              style={{
-                height: "50px",
-                paddingLeft: "10px",
-                backgroundColor: "#e5ecff",
-                marginTop: "5px",
-                fontSize: "15px",
-              }}
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              required
-            />
-          </label>
+            <label className="grid mt-5">
+              Promotion Id
+              <input
+                type="text"
+                placeholder="Enter Promotion Id"
+                id="title"
+                className="rounded w-[50vh] outline-none"
+                style={{
+                  height: "50px",
+                  paddingLeft: "10px",
+                  backgroundColor: "#e5ecff",
+                  marginTop: "5px",
+                  fontSize: "15px",
+                }}
+                value={id}
+                onChange={(event) => setId(event.target.value)}
+                required
+              />
+            </label>
+            <label className="grid mt-5">
+              Promotion Title
+              <input
+                type="text"
+                placeholder="Enter Promotion Title"
+                id="title"
+                className="rounded w-[50vh] outline-none"
+                style={{
+                  height: "50px",
+                  paddingLeft: "10px",
+                  backgroundColor: "#e5ecff",
+                  marginTop: "5px",
+                  fontSize: "15px",
+                }}
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                required
+              />
+            </label>
             <label className="grid">
               Catagory
               <select
@@ -284,7 +284,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
               color: "white",
             }}
             type="submit"
-            >
+          >
             Publish
           </button>
           {/* <button

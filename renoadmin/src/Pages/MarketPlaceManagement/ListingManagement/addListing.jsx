@@ -63,12 +63,12 @@ const AddListing = ({ setExpand, setActiveTab }) => {
   ];
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className=" ml-80 mb-10 relative" style={{ marginTop: "120px" }}>
+      <div className=" relative">
         <form onSubmit={handleSubmit}>
           <label className="grid mt-5">
             Service Name

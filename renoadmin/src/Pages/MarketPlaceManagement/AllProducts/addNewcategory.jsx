@@ -19,7 +19,7 @@ const AddNewCategory = ({ setExpand, setActiveTab }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = (event) => {
-console.log("clicked")
+    console.log("clicked")
     const formData = new FormData();
     formData.append("prod_category", title);
     images.forEach((image, index) => {
@@ -40,8 +40,8 @@ console.log("clicked")
   };
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 

@@ -98,14 +98,14 @@ const Action = ({ username, email, phone, uid, picUrl, role }) => {
   return (
     <div className="flex gap-3 items-center pr-20">
       <div className="flex w-5 h-5 flex gap-2 cursor-pointer">
-      {roles === "admin" || roles === "editor" ? (
-    <>
-      <img src={Edit} onClick={handleEditClick} alt="Edit" />
-      <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
-      <img src={Suspend} onClick={handleSuspendClick} alt="Suspend" />
-    </>
-  ) : null}
-  <img src={View} onClick={handleViewClick} alt="View" />
+        {roles === "admin" || roles === "editor" ? (
+          <>
+            <img src={Edit} onClick={handleEditClick} alt="Edit" />
+            <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+            <img src={Suspend} onClick={handleSuspendClick} alt="Suspend" />
+          </>
+        ) : null}
+        <img src={View} onClick={handleViewClick} alt="View" />
       </div>
       {showPopup && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
@@ -249,13 +249,12 @@ const Allmembers = ({ setActiveTab, setExpand }) => {
   console.log(roles)
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
-
       {loading ? (
-        <div className="fixed inset-0 bg-gray-700 opacity-80 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-gray-700 opacity-80 flex h-[100vh] v-[100vw] justify-center items-center z-50">
           <Grid
             height="80"
             width="80"
@@ -268,8 +267,7 @@ const Allmembers = ({ setActiveTab, setExpand }) => {
           />
         </div>
       ) : null}
-      <div
-        className=" ml-72 h-[90vh] w-[140vh] relative"
+      <div className=" relative"
         style={{ marginTop: "70px" }}>
         {userData.length > 0 ? (
           <Table

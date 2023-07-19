@@ -36,7 +36,7 @@ const AddNewRole = ({ setActiveTab }) => {
 
     try {
       const response = await axios
-        .post("http://139.59.236.50:8000/createrole", {username, email, role, status})
+        .post("http://139.59.236.50:8000/createrole", { username, email, role, status })
         .then((response) => {
           setUserName("");
           setEmailAddress("");
@@ -54,8 +54,8 @@ const AddNewRole = ({ setActiveTab }) => {
   const head = "Add New Role";
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
       <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">

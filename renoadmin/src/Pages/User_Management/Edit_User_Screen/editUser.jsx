@@ -76,12 +76,12 @@ const EditUser = ({ setActiveTab, setExpand }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className="ml-80 mt-20 relative" style={{ marginTop: "140px" }}>
+      <div className="p-3 relative">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <label className="grid pr-6">
@@ -208,28 +208,28 @@ const EditUser = ({ setActiveTab, setExpand }) => {
               )}
             </label>
           </div>
-        <div className="flex mt-10 gap-5 items-center">
-          <button
-            className="rounded bg-lime-600 hover:bg-lime-700"
-            style={{
-              width: "130px",
-              height: "55px",
-              color: "white",
-            }}
-            type="submit"
-            onSubmit={handleSubmit}>
-            SAVE
-          </button>
-          <button
-            className="rounded bg-black hover:bg-gray-800"
-            style={{
-              width: "130px",
-              height: "55px",
-              color: "white",
-            }}>
-            <Link to="/home/allUsers">Back</Link>
-          </button>
-        </div>
+          <div className="flex mt-10 gap-5 items-center">
+            <button
+              className="rounded bg-lime-600 hover:bg-lime-700"
+              style={{
+                width: "130px",
+                height: "55px",
+                color: "white",
+              }}
+              type="submit"
+              onSubmit={handleSubmit}>
+              SAVE
+            </button>
+            <button
+              className="rounded bg-black hover:bg-gray-800"
+              style={{
+                width: "130px",
+                height: "55px",
+                color: "white",
+              }}>
+              <Link to="/home/allUsers">Back</Link>
+            </button>
+          </div>
         </form>
       </div>
     </div>

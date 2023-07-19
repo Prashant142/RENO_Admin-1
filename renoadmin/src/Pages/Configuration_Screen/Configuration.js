@@ -75,8 +75,8 @@ const Configuration = ({ setActiveTab }) => {
   const roles = Cookies.get('roles')
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
       <Snackbar
@@ -93,7 +93,7 @@ const Configuration = ({ setActiveTab }) => {
           Settings created successfully
         </Alert>
       </Snackbar>
-      <div className=" ml-72 mt-32 w-[100%] relative">
+      <div className="relative">
         <div className="flex flex-row w-full h-full justify-center sm:justify-start items-center m-3">
           <form
             action="submit"

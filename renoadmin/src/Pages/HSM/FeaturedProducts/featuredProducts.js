@@ -41,11 +41,11 @@ const Action = ({ prodId, prodName }) => {
   const roles = cookie.get("role");
   return (
     <div className="w-6 h-6 flex gap-3 cursor-pointer">
-            {roles === "admin" || roles === "editor" ? (
+      {roles === "admin" || roles === "editor" ? (
         <>
-      <img src={edit} onClick={handleClick} alt="edit" />
-      <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
-      </>
+          <img src={edit} onClick={handleClick} alt="edit" />
+          <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+        </>
       ) : "Not Accessible"}
       {showDeleteConfirmation && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
@@ -151,12 +151,12 @@ const AllProjects = ({ setActiveTab, setExpand }) => {
   const pageSize = 4;
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
       {loading ? (
-        <div className="fixed inset-0 bg-gray-700 opacity-80 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-gray-700 opacity-80 flex h-[100vh] v-[100vw] justify-center items-center z-50">
           <Grid
             height="80"
             width="80"
@@ -169,7 +169,7 @@ const AllProjects = ({ setActiveTab, setExpand }) => {
           />
         </div>
       ) : null}
-      <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
+      <div className=" relative">
         {featuredData.length > 0 ? (
           <Table
             columns={columns}

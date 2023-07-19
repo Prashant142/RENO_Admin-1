@@ -66,12 +66,12 @@ const CreateUser = ({ setActiveTab, setExpand }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className="ml-80 mt-20 relative" style={{ marginTop: "140px" }}>
+      <div className=" p-3 relative">
         <form onSubmit={handleSubmit}>
           <div class="grid grid-cols-2 gap-4">
             <label className="grid pr-6">

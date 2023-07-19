@@ -48,7 +48,7 @@ const Purchases = ({ setActiveTab, setExpand }) => {
     return (
       <button
         className="bg-blue-500 px-2 py-2 rounded-l text-white coursor-pointer hover:bg-blue-600"
-        // onClick={viewOrder}
+      // onClick={viewOrder}
       >
         View Order
       </button>
@@ -106,12 +106,12 @@ const Purchases = ({ setActiveTab, setExpand }) => {
   const pageSize = 4;
 
   return (
-    <div>
-      <div className="flex fixed z-10">
+    <div className="flex-grow px-2 pe-4">
+      <div className="flex sticky top-0 z-10">
         <TopHeader className="fixed" head={head} />
       </div>
       {loading ? (
-        <div className="fixed inset-0 bg-gray-700 opacity-80 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-gray-700 opacity-80 flex h-[100vh] v-[100vw] justify-center items-center z-50">
           <Grid
             height="80"
             width="80"
@@ -124,7 +124,7 @@ const Purchases = ({ setActiveTab, setExpand }) => {
           />
         </div>
       ) : null}
-      <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
+      <div className=" relative">
         {transactionData.length > 0 ? (
           <Table columns={columns} data={data} pageSize={pageSize} />
         ) : (
