@@ -58,6 +58,8 @@ import ServiceCategory from "../Pages/HSM/ServiceCategory/serviceCategory.jsx";
 import ServicePackageList from "../Pages/HSM/ServicePackage/servicePackage";
 import AddNewServicePackage from "../Pages/HSM/ServicePackage/addServicePackage";
 import EditServicePackage from "../Pages/HSM/ServicePackage/editServicePackage";
+import EditCategoryList from "../Pages/HSM/CategoryList/editCategoryList";
+import AddNewCategoryList from "../Pages/HSM/CategoryList/addNewCategoryList";
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -137,6 +139,16 @@ function Home() {
               path="/addNewServicePackageList"
               element={
                 <AddNewServicePackage
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addNewCategoryList"
+              element={
+                <AddNewCategoryList
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
@@ -408,6 +420,16 @@ function Home() {
               path="/editServices"
               element={
                 <EditService
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editCategoryList"
+              element={
+                <EditCategoryList
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

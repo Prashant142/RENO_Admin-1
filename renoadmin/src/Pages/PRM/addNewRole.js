@@ -54,11 +54,11 @@ const AddNewRole = ({ setActiveTab }) => {
   const head = "Add New Role";
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
-      <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
+      <div className="  ml-72 mt-28 w-[75vw] relative">
         <form
           onSubmit={HandleSubmit}
           className="flex flex-col w-full h-full p-5 pt-10">

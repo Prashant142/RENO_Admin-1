@@ -131,8 +131,8 @@ const SuspendUser = ({ setActiveTab, setExpand }) => {
   const pageSize = 4;
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
       {loading ? (
@@ -149,7 +149,7 @@ const SuspendUser = ({ setActiveTab, setExpand }) => {
           />
         </div>
       ) : null}
-      <div className=" ml-72 mt-28 h-[85vh] min-w-[84%] relative">
+      <div className="   ml-72 mt-28 w-[75vw] relative">
         {suspendData.length > 0 ? (
           <Table
             columns={columns}

@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 const EditServicePackage = ({ setExpand, setActiveTab }) => {
     // setExpand("marketPlace");
     setActiveTab("servicePackageManagement");
-    const head = "Add New Service Package";
+    const head = "Edit Service Package";
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

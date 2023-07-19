@@ -7,11 +7,11 @@ import TopHeader from "../../UI/TopHeader/TopHeader";
 const Dashboard = () => {
   const head = "Dashboard";
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
-      <div className=" relative">
+      <div className=" ml-72 mt-32 w-[80%] relative">
         <div className="flex flex-wrap justify-between mt-5 mx-4 sm:justify-start text-white">
           <div className="w-full sm:w-1/2 md:w-2/4 lg:w-1/4  px-2 mb-4">
             <Card

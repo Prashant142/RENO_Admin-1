@@ -40,8 +40,8 @@ const CreateNewPage = ({ setExpand, setActiveTab }) => {
   };
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
@@ -134,7 +134,7 @@ const CreateNewPage = ({ setExpand, setActiveTab }) => {
               </li>
             </ul>
           </div>
-          <div style={{ paddingLeft: "5px" }}>
+          <div style={{paddingLeft:"5px"}}>
             <button
               className="rounded bg-lime-600 hover:bg-lime-700 mt-10"
               style={{

@@ -11,7 +11,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
   const head = "Edit Listing";
   const dispatch = useDispatch();
   const location = useLocation();
-  const data = location.state;
+  const data=location.state;
 
   const [title, setTitle] = useState(data.name);
   const [category, setCategory] = useState("");
@@ -65,12 +65,12 @@ const EditListing = ({ setExpand, setActiveTab }) => {
   ];
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className=" relative">
+      <div className=" ml-80 mb-10 relative" style={{ marginTop: "120px" }}>
         <form onSubmit={handleSubmit}>
           <label className="grid mt-5">
             Service Name
@@ -214,28 +214,28 @@ const EditListing = ({ setExpand, setActiveTab }) => {
           {/* <div> */}
           {/* </div> */}
         </form>
-        <button
-          className="rounded mt-10 bg-lime-600 hover:bg-lime-700"
-          style={{
-            width: "170px",
-            height: "55px",
-            color: "white",
-          }}
-          type="submit"
-          onClick={handleSubmit}>
-          Save
-        </button>
-        <button
-          className="rounded mt-10 bg-black hover:bg-gray-800"
-          style={{
-            width: "170px",
-            height: "55px",
-            color: "white",
-            marginLeft: "30px",
-          }}
-          type="submit">
-          <Link to='/home/listingManagement'>Cancel</Link>
-        </button>
+          <button
+            className="rounded mt-10 bg-lime-600 hover:bg-lime-700"
+            style={{
+              width: "170px",
+              height: "55px",
+              color: "white",
+            }}
+            type="submit"
+            onClick={handleSubmit}>
+            Save
+          </button>
+          <button
+            className="rounded mt-10 bg-black hover:bg-gray-800"
+            style={{
+              width: "170px",
+              height: "55px",
+              color: "white",
+              marginLeft: "30px",
+            }}
+            type="submit">
+            <Link to='/home/listingManagement'>Cancel</Link>
+          </button>
       </div>
     </div>
   );

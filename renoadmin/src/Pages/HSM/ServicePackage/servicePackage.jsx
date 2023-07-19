@@ -152,7 +152,7 @@ const ServicePackageList = ({ setActiveTab, setExpand }) => {
             <div className="flex fixed z-10">
                 <TopHeader className="fixed" head={head} />
             </div>
-            <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
+            <div className="  ml-72 mt-28 w-[75vw] relative">
                 <Table
                     columns={columns}
                     data={data}

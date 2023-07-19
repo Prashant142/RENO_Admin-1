@@ -5,41 +5,43 @@ import Table from "../../../UI/CommonTable/Table";
 import { deleteIcon, edit } from "../Assets/index";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertTitle, Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
 // { catId, catName } this is the props for action
-const Action = () => {
-  // const Navigate = useNavigate();
-  // const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  // const handleClick = () => {
-  //   console.log(catName);
-  //   const data = {
-  //     catname: catName,
-  //   };
-  //   Navigate("/home/editCategory", { state: data });
-  // };
-  // const dispatch = useDispatch();
-  // const handleDeleteClick = () => {
-  //   setShowDeleteConfirmation(true);
-  // };
+const Action = ({ catId, catName }) => {
+  const Navigate = useNavigate();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const handleClick = () => {
+    console.log(catName);
+    const data = {
+      catname: catName,
+    };
+    Navigate("/home/editCategoryList", { state: data });
+  };
+  const dispatch = useDispatch();
+  const handleDeleteClick = () => {
+    setShowDeleteConfirmation(true);
+  };
 
-  // const handleConfirmDelete = () => {
-  //   dispatch(DeleteCategory(catId))
-  //     .then(() => {
-  //       window.location.reload();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const handleConfirmDelete = () => {
+    // dispatch(DeleteCategory(catId))
+    // .then(() => {
+    // window.location.reload();
+    // })
+    // .catch((err) => {
+    // console.log(err);
+    // });
+  };
 
-  // const handleCancelDelete = () => {
-  //   setShowDeleteConfirmation(false);
-  // };
+  const handleCancelDelete = () => {
+    setShowDeleteConfirmation(false);
+  };
   return (
     <div className="w-6 h-6 flex gap-3 cursor-pointer">
-      <img src={edit} alt="edit" />
-      <img src={deleteIcon} alt="Delete" />
-      {/* {showDeleteConfirmation && (
+      <img src={edit} onClick={handleClick} alt="edit" />
+      <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+      {showDeleteConfirmation && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-5 rounded shadow">
             <Alert severity="warning">
@@ -56,7 +58,7 @@ const Action = () => {
             </Alert>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
@@ -74,23 +76,23 @@ const CategoryList = ({ setActiveTab, setExpand }) => {
   setExpand("homeService");
   setActiveTab("categoryList");
   const Navigate = useNavigate();
-  //   const greenClicked = () => {
-  //     Navigate("/home/addNewCategory");
-  //   };
+  const greenClicked = () => {
+    Navigate("/home/addNewCategoryList");
+  };
 
-  //   const dispatch = useDispatch();
-  //   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
-  //   const productData = useSelector((state) => state.userManagement.mpm_category);
+  // const productData = useSelector((state) => state.userManagement.mpm_category);
 
-  //   useEffect(() => {
-  //     const fetchUserData = async () => {
-  //       setLoading(true);
-  //       await dispatch(MPM_category());
-  //       setLoading(false);
-  //     };
-  //     fetchUserData();
-  //   }, [dispatch]);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      setLoading(true);
+      // await dispatch(MPM_category());
+      setLoading(false);
+    };
+    fetchUserData();
+  }, [dispatch]);
 
   const productData = [
     {
@@ -144,17 +146,18 @@ const CategoryList = ({ setActiveTab, setExpand }) => {
   const pageSize = 4;
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
-      <div className=" ml-72 mt-28 h-[85vh] w-[140vh] relative">
+      <div className="  ml-72 mt-28 w-[75vw] relative">
         <Table
           columns={columns}
           data={data}
           pageSize={pageSize}
           blackButtonText={blackButtonText}
           greenButtonText={greenButtonText}
+          greenClicked={greenClicked}
         />
       </div>
     </div>

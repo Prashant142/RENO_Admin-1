@@ -9,12 +9,13 @@ const TopHeader = (props) => {
 
   return (
     <div
-      className="w-full h-20 bg-white"
-      style={{ zIndex: "1000 !important" }}>
-      <div className="ps-4 flex h-20 items-center justify-between">
+      className="ml-72 w-full h-20 fixed bg-white"
+      style={{ marginLeft: "17.3rem", zIndex:"1000 !important" }}>
+      <div className="ml-3 flex h-20 items-center justify-between">
         <div className="text-2xl font-semibold">{props.head}</div>
         <div
-          className="flex h-20 items-center cursor-pointer">
+          className="flex h-20 items-center cursor-pointer"
+          style={{ marginRight: "20rem" }}>
           <img
             src={pic}
             alt=""

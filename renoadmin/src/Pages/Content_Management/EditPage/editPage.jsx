@@ -42,8 +42,8 @@ const EditPage = ({ setExpand, setActiveTab }) => {
   };
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
@@ -151,9 +151,9 @@ const EditPage = ({ setExpand, setActiveTab }) => {
               width: "130px",
               height: "55px",
               color: "white",
-              marginLeft: "50px"
+              marginLeft:"50px"
             }}
-          >
+            >
             <Link to='/home/contentManagement'>Cancel</Link>
           </button>
         </form>

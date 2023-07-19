@@ -166,50 +166,47 @@ const Tabs = () => {
     <div className="p-4">
       <div className="flex space-x-4">
         <button
-          className={`py-2 px-4 rounded ${
-            activeTab === 1
-              ? "bg-[#8FC743] text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
+          className={`py-2 px-4 rounded ${activeTab === 1
+            ? "bg-[#8FC743] text-white"
+            : "bg-gray-200 text-gray-700"
+            }`}
           onClick={() => handleTabClick(1)}>
           Order History
         </button>
         <button
-          className={`py-2 px-4 rounded ${
-            activeTab === 2
-              ? "bg-[#8FC743] text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
+          className={`py-2 px-4 rounded ${activeTab === 2
+            ? "bg-[#8FC743] text-white"
+            : "bg-gray-200 text-gray-700"
+            }`}
           onClick={() => handleTabClick(2)}>
           Reward Point History
         </button>
         <button
-          className={`py-2 px-4 rounded ${
-            activeTab === 3
-              ? "bg-[#8FC743] text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
+          className={`py-2 px-4 rounded ${activeTab === 3
+            ? "bg-[#8FC743] text-white"
+            : "bg-gray-200 text-gray-700"
+            }`}
           onClick={() => handleTabClick(3)}>
           Internal Notes
         </button>
       </div>
 
       {activeTab === 1 && (
-        <div className="mt-4 mb-10 border h-[60vh] w-[130vh] overflow-y-auto">
+        <div className="mt-4 mb-10 border overflow-y-auto">
           <div className="mb-10">
             <Table columns={columns_order} data={data_order} />
           </div>
         </div>
       )}
       {activeTab === 2 && (
-        <div className="mt-4 mb-10 border h-[60vh] w-[130vh] overflow-y-auto">
+        <div className="mt-4 mb-10 border overflow-y-auto">
           <div className="mb-10">
             <Table columns={columns_reward} data={data_reward} />
           </div>
         </div>
       )}
       {activeTab === 3 && (
-        <div className="mt-4 mb-10 border w-[130vh]">
+        <div className="mt-4 mb-10 border">
           <InputField />
         </div>
       )}

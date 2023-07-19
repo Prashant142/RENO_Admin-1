@@ -13,8 +13,8 @@ const EditProducts = ({ setExpand, setActiveTab }) => {
   const head = "Edit Product";
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 

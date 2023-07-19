@@ -16,14 +16,14 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
   }
 
   return (
-    <div className="flex-grow px-2 ">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex" style={{ zIndex: "100" }}>
         <TopHeader className="fixed" head={head} />
       </div>
 
       <div
-        className=" relative flex"
-        style={{}}>
+        className="ml-72 mt-20 relative flex"
+        style={{ marginTop: "107px", zIndex: -1 }}>
         <div>
           <div
             className="rounded"
@@ -159,7 +159,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
         </div>
       </div>
       {/* Order History */}
-      <div className="" style={{ marginTop: "20px", zIndex: -1 }}>
+      <div className="ml-72" style={{ marginTop: "20px", zIndex: -1 }}>
         <div className="font-bold text-3xl pt-10 pb-5">Purchased Products</div>
         <div className="grid grid-cols-4 gap-6">
           <div
@@ -219,7 +219,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               Dummy Text that will be fetch from backend Lorem opiujdi boefbc
               i3eoif pwejfp
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between px-3">
               <div
                 className="text-red-500"
                 style={{
@@ -233,7 +233,6 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                 style={{
                   marginTop: "30px",
                   fontSize: "12px",
-                  marginLeft: "180px",
                 }}
                 className="text-gray-500">
                 12 days ago
@@ -297,7 +296,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               Dummy Text that will be fetch from backend Lorem opiujdi boefbc
               i3eoif pwejfp
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between px-3">
               <div
                 className="text-red-500"
                 style={{
@@ -311,7 +310,6 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                 style={{
                   marginTop: "30px",
                   fontSize: "12px",
-                  marginLeft: "180px",
                 }}
                 className="text-gray-500">
                 12 days ago
@@ -321,7 +319,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
         </div>
       </div>
       <div
-        className=""
+        className="ml-72"
         style={{ marginTop: "20px", marginBottom: "20px", zIndex: -1 }}>
         <div style={{ fontWeight: "bolder", fontSize: "17px", zIndex: -1 }}>
           My Products
@@ -349,7 +347,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               Dummy Text that will be fetch from backend Lorem opiujdi boefbc
               i3eoif pwejfp
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between px-3">
               <div
                 className="text-red-500"
                 style={{
@@ -363,7 +361,6 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                 style={{
                   marginTop: "30px",
                   fontSize: "12px",
-                  marginLeft: "180px",
                 }}
                 className="text-gray-500">
                 12 days ago
@@ -392,7 +389,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               Dummy Text that will be fetch from backend Lorem opiujdi boefbc
               i3eoif pwejfp
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center justify-between px-3">
               <div
                 className="text-red-500"
                 style={{
@@ -406,7 +403,6 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                 style={{
                   marginTop: "30px",
                   fontSize: "12px",
-                  marginLeft: "180px",
                 }}
                 className="text-gray-500">
                 12 days ago

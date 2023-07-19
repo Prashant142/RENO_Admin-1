@@ -64,13 +64,14 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
   ];
 
   return (
-    <div className="flex-grow px-2 pe-4">
-      <div className="flex sticky top-0 z-10">
+    <div>
+      <div className="flex fixed z-10">
         <TopHeader className="fixed" head={head} />
       </div>
 
       <div
-        className=" relative p-3">
+        className=" ml-80 mb-10 w-[100vh] relative"
+        style={{ marginTop: "120px" }}>
         <form onSubmit={handleSubmit}>
           <label className="grid mt-5">
             Project Title
