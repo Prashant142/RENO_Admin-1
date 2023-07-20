@@ -72,7 +72,7 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
         </div>
 
         <div
-          className="ml-72 mt-20 relative flex"
+          className="ml-72 mt-20 bg-slate-100 rounded-2xl p-4 relative flex"
           style={{ marginTop: "107px", zIndex: "2" }}>
           <div className="pr-10">
             <div
@@ -82,7 +82,7 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
                 height: "220px",
                 border: "2px solid #EFEFEF",
                 backgroundColor: "#FFFFFF",
-                filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                filter: "drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1))",
               }}>
               <img
                 style={{ width: "150px", marginLeft: "10px", marginTop: "10px" }}
@@ -109,37 +109,37 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
           </div>
 
           {/* Members details data */}
-          <div className="flex flex-col gap-16">
-            <div className="flex flex-row justify-center gap-8 items-center">
-              <div className="flex flex-row gap-2">
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-row justify-start gap-5 items-center">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-md shadow-md bg-white">
                 <label>Name :</label>
                 <p>{memData.username}dummy name</p>
               </div>
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-md shadow-md bg-white">
                 <label>Phone No :</label>
                 <p>{memData.contact}+91 921681268</p>
               </div>
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-md shadow-md bg-white">
                 <label>Email :</label>
                 <p>{memData.email}dummy123@gmail.com</p>
               </div>
             </div>
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-row gap-2">
+            <div className="flex flex-row justify-start gap-5 items-center">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-full shadow-md bg-white">
                 <label>Purchased item :</label>
                 <p>{memData.purchase}12</p>
               </div>
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-full shadow-md bg-white">
                 <label>Payment History :</label>
                 <p>{memData.payment}$1213</p>
               </div>
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-full shadow-md bg-white">
                 <label>Reward Points :</label>
                 <p>{memData.points}1212</p>
               </div>
             </div>
             <div className="flex flex-row justify-between items-center">
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 py-3 px-4 rounded-full shadow-md bg-white">
                 <label>Cashback Points :</label>
                 <p>{memData.about}122</p>
               </div>
