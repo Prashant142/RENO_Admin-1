@@ -41,7 +41,7 @@ function Table({
   return (
     <>
       <div className="p-5 table-container">
-        <div className="flex w-full justify-between items-center mb-5">
+        <div className="flex justify-between items-center mb-5">
           <div className="w-1/3 relative">
             <input
               type="text"
@@ -106,8 +106,8 @@ function Table({
           <div className="pagination absolute left-0 right-0 flex justify-end p-5 gap-3">
             <button
               className={`px-4 border-2 rounded-md ${currentPage === 0
-                  ? "bg-[#DDDEF9] text-gray-500 cursor-default"
-                  : "bg-white text-gray-700 "
+                ? "bg-[#DDDEF9] text-gray-500 cursor-default"
+                : "bg-white text-gray-700 "
                 }`}
               disabled={currentPage === 0}
               onClick={handlePreviousPage}>
@@ -117,8 +117,8 @@ function Table({
               } - ${pageCount}`}</span>
             <button
               className={`px-4 border-2 rounded-md ${currentPage === pageCount - 1
-                  ? "bg-[#DDDEF9] text-gray-500 cursor-default"
-                  : "bg-white text-gray-700"
+                ? "bg-[#DDDEF9] text-gray-500 cursor-default"
+                : "bg-white text-gray-700"
                 }`}
               disabled={currentPage === pageCount - 1}
               onClick={handleNextPage}>

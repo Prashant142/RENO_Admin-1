@@ -164,7 +164,7 @@ const Tabs = () => {
 
   return (
     <div className="p-4">
-      <div className="flex space-x-4">
+      <div className="flex  space-x-4">
         <button
           className={`py-2 px-4 rounded ${activeTab === 1
             ? "bg-[#8FC743] text-white"
@@ -192,21 +192,21 @@ const Tabs = () => {
       </div>
 
       {activeTab === 1 && (
-        <div className="mt-4 mb-10 border overflow-y-auto">
-          <div className="mb-10">
+        <div className="mt-4 mb-10 ">
+          <div className=" w-[75vw] relative">
             <Table columns={columns_order} data={data_order} />
           </div>
         </div>
       )}
       {activeTab === 2 && (
-        <div className="mt-4 mb-10 border overflow-y-auto">
-          <div className="mb-10">
+        <div className="mt-4 mb-10 ">
+          <div className=" w-[75vw] relative">
             <Table columns={columns_reward} data={data_reward} />
           </div>
         </div>
       )}
       {activeTab === 3 && (
-        <div className="mt-4 mb-10 border">
+        <div className=" w-[75vw] relative mt-10 ">
           <InputField />
         </div>
       )}

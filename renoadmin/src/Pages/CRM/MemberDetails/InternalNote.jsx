@@ -15,22 +15,27 @@ const InputField = () => {
         {
           note: "This is the first internal note.",
           file: null,
+          dateAdded: "19-02-2023"
         },
         {
           note: "This is the second internal note with an attached file.",
           file: "https://www.africau.edu/images/default/sample.pdf",
+          dateAdded: "19-02-2023"
         },
         {
           note: "This is the third internal note.",
           file: null,
+          dateAdded: "19-02-2023"
         },
         {
           note: "This is the fourth internal note.",
           file: null,
+          dateAdded: "19-02-2023"
         },
         {
           note: "This is the fifth internal note.",
           file: null,
+          dateAdded: "19-02-2023"
         },
       ];
 
@@ -60,11 +65,16 @@ const InputField = () => {
   };
 
   return (
-    <div className="p-2 flex flex-col space-y-4 h-[50vh] overflow-y-auto">
+    <div className="p-2 flex flex-col space-y-4 ">
       <div className="flex flex-col space-y-4">
         {logs.map((log, index) => (
           <div key={index} className="bg-[#EEEEEE] border p-4 rounded">
-            <div className="font-bold">Internal Note</div>
+            <div className="flex justify-between">
+              <div className="font-bold">Internal Note</div>
+              <div>
+                {log.dateAdded}
+              </div>
+            </div>
             <div className="mt-2">{log.note}</div>
             {log.file && (
               <div className="mt-4">
