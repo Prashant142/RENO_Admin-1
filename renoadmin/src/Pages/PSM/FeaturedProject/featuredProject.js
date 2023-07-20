@@ -90,7 +90,7 @@ const Photo = ({ picUrl }) => {
 const FeaturedProject = ({ setActiveTab, setExpand }) => {
   const head = "Featured Project";
 
-  // setExpand("showcaseManagement");
+  setExpand("showcaseManagement");
   setActiveTab("featuredProject");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);

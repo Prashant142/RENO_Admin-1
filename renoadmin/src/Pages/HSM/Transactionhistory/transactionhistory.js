@@ -3,7 +3,7 @@ import Table from "../../../UI/CommonTable/Table";
 import { deleteIcon, images } from "../Assets/index";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Grid } from "react-loader-spinner";
 import { HSM_transaction } from "../../User_Management/features/userSlice";
@@ -43,12 +43,15 @@ const Purchases = ({ setActiveTab, setExpand }) => {
     };
     fetchUserData();
   }, [dispatch]);
-
+  const navigate = useNavigate();
+  const viewOrder = () => {
+    navigate("/home/viewOrder");
+  };
   const Options = () => {
     return (
       <button
         className="bg-blue-500 px-2 py-2 rounded-l text-white coursor-pointer hover:bg-blue-600"
-      // onClick={viewOrder}
+        onClick={viewOrder}
       >
         View Order
       </button>

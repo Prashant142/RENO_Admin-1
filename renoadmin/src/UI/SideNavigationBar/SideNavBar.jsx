@@ -199,7 +199,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink
+              <NavLink to='/home/projectList'
                 style={{
                   color: expand === "showcaseManagement" ? "green" : "#545e6f",
                   fontWeight:
@@ -272,7 +272,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink
+              <NavLink to='/home/productList'
                 style={{
                   color: expand === "homeService" ? "green" : "#545e6f",
 
@@ -502,7 +502,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink
+              <NavLink to='/home/catagoryManagement'
                 style={{
                   color: expand === "marketPlace" ? "green" : "#545e6f",
                   fontWeight: expand === "marketPlace" ? "bold" : "inherit",

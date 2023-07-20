@@ -60,6 +60,11 @@ import AddNewServicePackage from "../Pages/HSM/ServicePackage/addServicePackage"
 import EditServicePackage from "../Pages/HSM/ServicePackage/editServicePackage";
 import EditCategoryList from "../Pages/HSM/CategoryList/editCategoryList";
 import AddNewCategoryList from "../Pages/HSM/CategoryList/addNewCategoryList";
+import EditProductCategory from "../Pages/HSM/ProductCategory/editProductCategory";
+import EditServiceCategory from "../Pages/HSM/ServiceCategory/editServiceCategory";
+import AddNewProductCategory from "../Pages/HSM/ProductCategory/addNewProductCategory";
+import AddNewServiceCategory from "../Pages/HSM/ServiceCategory/addNewServiceCategory";
+
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -149,6 +154,26 @@ function Home() {
               path="/addNewCategoryList"
               element={
                 <AddNewCategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addNewServiceCategory"
+              element={
+                <AddNewServiceCategory
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addNewProductCategory"
+              element={
+                <AddNewProductCategory
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
@@ -430,6 +455,26 @@ function Home() {
               path="/editCategoryList"
               element={
                 <EditCategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editServiceCategory"
+              element={
+                <EditServiceCategory
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editProductCategory"
+              element={
+                <EditProductCategory
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
