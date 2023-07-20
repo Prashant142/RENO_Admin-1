@@ -227,7 +227,7 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
                     className="text-gray-500"
                     style={{ fontSize: "12px", paddingLeft: "8px" }}
                   >
-                    {message.time} / {message.date}
+                    {message.date} {message.time}
                   </div>
                 </div>
               );
@@ -265,7 +265,7 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
                       fontSize: "12px",
                     }}
                   >
-                    {message.time} / {message.date}
+                    {message.date} {message.time}
                   </div>
                 </div>
               );

@@ -57,7 +57,7 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
             textAlign: 'center',
           }} className="text-gray-900">Amount</h2>
           <div className="my-3">
-            <TextField id="outlined-basic" label="Enter Amount" fullWidth variant="outlined" />
+            <TextField type="number" id="outlined-basic" label="Enter Amount" fullWidth variant="outlined" />
             <div className="text-end mt-2">
               <Button color="success" variant="contained">
                 Set TopUp
@@ -138,7 +138,7 @@ const MemberDetails = ({ setActiveTab, setExpand }) => {
                 <p>{memData.points}1212</p>
               </div>
             </div>
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row justify-start gap-8 items-center">
               <div className="flex flex-row gap-2 py-3 px-4 rounded-full shadow-md bg-white">
                 <label>Cashback Points :</label>
                 <p>{memData.about}122</p>

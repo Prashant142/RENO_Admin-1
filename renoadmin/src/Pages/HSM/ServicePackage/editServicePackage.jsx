@@ -36,6 +36,19 @@ const EditServicePackage = ({ setExpand, setActiveTab }) => {
 
             <div className=" ml-72 mb-10 relative" style={{ marginTop: "120px" }}>
                 <form onSubmit={handleSubmit}>
+                    <label className="grid mt-5">Category List :
+                        <select id=""
+                            style={{
+                                height: "50px",
+                                backgroundColor: "#e5ecff",
+                                fontSize: "15px",
+                            }}
+                            className="px-4 py-2 mt-3 drop-shadow-md rounded-md  ">
+                            <option >Select Category</option>
+                            <option >Category 1</option>
+                            <option >Category 2</option>
+                        </select>
+                    </label>
                     <label className="grid mt-5">
                         Service Category Name
                         <input

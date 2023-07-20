@@ -19,7 +19,7 @@ const Vieworder = () => {
 
   const head = "View Order";
   return (
-    <div>
+    <div className="w-[95vw]">
       <div className="fixed flex" style={{ zIndex: "10" }}>
         <TopHeader className="fixed" head={head} />
       </div>
@@ -149,8 +149,8 @@ const Vieworder = () => {
           </div>
         </div>
         {/* Order Details */}
-        <div className="flex flex-row gap-5">
-          <div className="bg-[#EEEEEE] mt-8 mb-10 w-[88vh] drop-shadow-md border flex flex-col gap-8 px-3 py-4">
+        <div className="flex flex-row w-full gap-5">
+          <div className="bg-[#EEEEEE] mt-8 mb-10 w-[60vw] drop-shadow-md border flex flex-col gap-8 px-3 py-4">
             <h2 className="font-bold text-lg">Order Details</h2>
             <div className="flex flex-row justify-between">
               <table className="w-full">
