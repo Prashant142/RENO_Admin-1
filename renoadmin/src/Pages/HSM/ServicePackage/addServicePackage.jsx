@@ -36,7 +36,7 @@ const AddNewServicePackage = ({ setExpand, setActiveTab }) => {
 
             <div className=" ml-72 mb-10 relative" style={{ marginTop: "120px" }}>
                 <form onSubmit={handleSubmit}>
-                    <label className="grid mt-5">Category List :
+                    <label className="grid mt-5">Service Category List :
                         <select id=""
                             style={{
                                 height: "50px",
@@ -48,25 +48,6 @@ const AddNewServicePackage = ({ setExpand, setActiveTab }) => {
                             <option >Category 1</option>
                             <option >Category 2</option>
                         </select>
-                    </label>
-                    <label className="grid mt-5">
-                        Service Category Name
-                        <input
-                            type="text"
-                            placeholder="Enter Category Name"
-                            id="title"
-                            className="rounded w-[100vh] outline-none"
-                            style={{
-                                height: "50px",
-                                paddingLeft: "10px",
-                                border: "2px solid 	#e6f7fe",
-                                marginTop: "5px",
-                                fontSize: "15px",
-                            }}
-                            value={title}
-                            onChange={(event) => setTitle(event.target.value)}
-                            required
-                        />
                     </label>
 
                     <div>
