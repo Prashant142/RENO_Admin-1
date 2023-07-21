@@ -64,6 +64,10 @@ import EditProductCategory from "../Pages/HSM/ProductCategory/editProductCategor
 import EditServiceCategory from "../Pages/HSM/ServiceCategory/editServiceCategory";
 import AddNewProductCategory from "../Pages/HSM/ProductCategory/addNewProductCategory";
 import AddNewServiceCategory from "../Pages/HSM/ServiceCategory/addNewServiceCategory";
+import Psm_Bookings from "../Pages/PSM/ProjectBookings/Bookings_psm";
+import PSM_CategoryList from "../Pages/PSM/CRUD/Category";
+import EditCategoryList_PSM from "../Pages/PSM/CRUD/editCategoryList";
+import AddNewCategoryList_PSM from "../Pages/PSM/CRUD/addNewCategoryList";
 
 // import { useLocation } from 'react-router-dom';
 
@@ -121,6 +125,36 @@ function Home() {
             />
             <Route
               exact
+              path="/bookings_psm"
+              element={
+                <Psm_Bookings
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/categoryList"
+              element={
+                <CategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/crud_category"
+              element={
+                <PSM_CategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
               path="/categoryList"
               element={
                 <CategoryList
@@ -154,6 +188,16 @@ function Home() {
               path="/addNewCategoryList"
               element={
                 <AddNewCategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/addNewCategoryListpsm"
+              element={
+                <AddNewCategoryList_PSM
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />
@@ -455,6 +499,16 @@ function Home() {
               path="/editCategoryList"
               element={
                 <EditCategoryList
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editCategoryListpsm"
+              element={
+                <EditCategoryList_PSM
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

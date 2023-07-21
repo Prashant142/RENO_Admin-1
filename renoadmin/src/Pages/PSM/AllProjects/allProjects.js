@@ -4,6 +4,8 @@ import { deleteIcon, edit, images } from "./Assets/index";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 import { useEffect, useState } from "react";
 import { Grid } from "react-loader-spinner";
@@ -53,6 +55,7 @@ const Action = ({ projId, projName, category, rate, type }) => {
         <>
           <img onClick={handleClick} src={edit} alt="edit" />
           <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
+          <FormControlLabel control={<Switch />}  />
         </>
       ) : (
         "Not Accessible"
