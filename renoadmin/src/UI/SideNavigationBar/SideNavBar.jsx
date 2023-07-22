@@ -199,7 +199,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink to='/home/projectList'
+              <NavLink 
                 style={{
                   color: expand === "showcaseManagement" ? "green" : "#545e6f",
                   fontWeight:
@@ -255,16 +255,32 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                     <NavLink
                       style={{
                         color:
+                          activeTab === "crud" ? "black" : "#545e6f",
+                        fontWeight:
+                          activeTab === "crud" ? "bold" : "inherit",
+                      }}
+                      to="/home/crud_category"
+                      onClick={() => {
+                        setActiveTab("crud");
+                        setExpand("showcaseManagement");
+                      }}>
+                      CRUD Category
+                    </NavLink>
+                  </div>
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
                           activeTab === "featuredProject" ? "black" : "#545e6f",
                         fontWeight:
                           activeTab === "featuredProject" ? "bold" : "inherit",
                       }}
-                      to="/home/featuredProject"
+                      to="/home/bookings_psm"
                       onClick={() => {
                         setActiveTab("featuredProject");
                         setExpand("showcaseManagement");
                       }}>
-                      Featured Project
+                      Bookings
                     </NavLink>
                   </div>
                 </>
@@ -272,7 +288,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink to='/home/productList'
+              <NavLink 
                 style={{
                   color: expand === "homeService" ? "green" : "#545e6f",
 
