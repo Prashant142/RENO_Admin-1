@@ -174,7 +174,7 @@ const Allmembers = ({ setActiveTab }) => {
 
   const pageSize = 10;
   const greenButtonText = "Export All";
-  const blackButtonText = "Add Members";
+  // const blackButtonText = "Add Members";
 
   // const handleButtonClick = () => {
   //   axios.get('http://139.59.236.50:8000/exportcustomers')
@@ -185,9 +185,9 @@ const Allmembers = ({ setActiveTab }) => {
   //   })
   // }
   const navigate = useNavigate();
-  const blackClicked = () => {
-    navigate("/home/addMembers");
-  };
+  // const blackClicked = () => {
+  // navigate("/home/addMembers");
+  // };
 
   return (
     <div>
@@ -219,8 +219,8 @@ const Allmembers = ({ setActiveTab }) => {
                 {greenButtonText}
               </a>
             }
-            blackButtonText={blackButtonText}
-            blackClicked={blackClicked}
+          // blackButtonText={blackButtonText}
+          // blackClicked={blackClicked}
           />
         ) : (
           <>
@@ -233,8 +233,8 @@ const Allmembers = ({ setActiveTab }) => {
                   {greenButtonText}
                 </a>
               }
-              blackButtonText={blackButtonText}
-              blackClicked={blackClicked}
+            // blackButtonText={blackButtonText}
+            // blackClicked={blackClicked}
             />
             <div className="flex ml-5 justify-center w-full mt-40">
               <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>
