@@ -18,6 +18,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
   const [pack, setPack] = useState("");
   const [offer, setOffer] = useState("");
   const [date, setDate] = useState("");
+  const [datend, setDatend] = useState("");
   const [offerby, setOfferby] = useState("");
   const [id, setId] = useState("");
   const [images, setImages] = useState([]);
@@ -95,7 +96,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                   Promotion Code
                   <input
                     type="text"
-                    placeholder="Enter Promotion Id"
+                    placeholder="Enter Promotion code"
                     id="title"
                     className="rounded w-[50vh] outline-none"
                     style={{
@@ -257,7 +258,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
               />
             </label> */}
                 <label className="grid">
-                  Date of Expiration
+                  Offer valid from
                   <input
                     type="date"
                     value={date}
@@ -272,6 +273,25 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                       fontSize: "14px",
                     }}
                     onChange={(event) => setDate(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Offer valid upto
+                  <input
+                    type="date"
+                    value={datend}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      border: "2px solid 	#e6f7fe",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDatend(event.target.value)}
                     required
                   />
                 </label>
@@ -483,7 +503,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
               />
             </label> */}
                 <label className="grid">
-                  Date of Expiration
+                  Offer valid from
                   <input
                     type="date"
                     value={date}
@@ -498,6 +518,25 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                       fontSize: "14px",
                     }}
                     onChange={(event) => setDate(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Offer valid upto
+                  <input
+                    type="date"
+                    value={datend}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      border: "2px solid 	#e6f7fe",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDatend(event.target.value)}
                     required
                   />
                 </label>
