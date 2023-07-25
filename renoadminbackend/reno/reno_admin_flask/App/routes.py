@@ -40,7 +40,7 @@ def addcategoryList():
                 ext = a[-1]
                 fn = str(category_id)+"."+ext
                 filename = secure_filename(fn)
-                UPLOAD_FOLDER_NAME = UPLOAD_FOLDER+"categoryList"
+                UPLOAD_FOLDER_NAME = UPLOAD_FOLDER+"/categoryList"
                 pic_url.save(os.path.join(UPLOAD_FOLDER_NAME, filename))
 
         if categoty_db.find_one({"category_name": request.form['category_name']}):
