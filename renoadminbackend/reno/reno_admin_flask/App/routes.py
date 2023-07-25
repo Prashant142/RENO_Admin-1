@@ -54,8 +54,8 @@ def addcategoryList():
 
         categoty_db.insert_one(data)
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
-    except:
-         return json.dumps({'success':False, "msg":"Something Went Wrong."}), 402, {'ContentType':'application/json'}
+    except Exception as e:
+         return json.dumps({'success':False, "msg":"Something Went Wrong.", "reason":e}), 402, {'ContentType':'application/json'}
     
 
 @app.route("/getAllCategoryList", methods=["GET"])
@@ -68,7 +68,32 @@ def getAllCategoryList():
                 "category_name":  category['category_name'],
                 "pic_url":  category['pic_url'],
                 "category_id": category['category_id']
-            })
+            }) 
         return json.dumps(ans)
     except:
         return json.dumps({'success':False, "msg":"Something Went Wrong."}), 402, {'ContentType':'application/json'}
+    
+
+# @app.route("/editCategoryList", methods=["GET"])
+# def editCategoryList():
+#     projects = db["projects_db"]
+#     data = request.json
+#     code = data['code']
+#     if projects.find_one({"code": code}) is None:
+#         return f"Project with code {code} does not exists in the database"
+#     data = {
+#         "code": code,
+#         "p_name": data['p_name'],
+#         "dev": data['dev'],
+#         "constr": data['constr'],
+#         "cont": data['cont'],
+#         "period": data['period'],
+#         "geo": data['geo'],
+#         "start_date": data['start_date'],
+#         "end_date": data['end_date'],
+#         "c_name": data['c_name'],
+#         "a_cname": data['a_cname']
+#     }
+#     new_values = {"$set": data}
+#     projects.update_one({"code": code}, new_values)
+#     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
