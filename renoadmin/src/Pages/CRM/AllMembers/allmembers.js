@@ -59,11 +59,11 @@ const Action = ({
 
   return (
     <div className="w-8 mr-10 h-6 flex gap-3 cursor-pointer">
-      <img
+      {/* <img
         src={Edit}
-        // onClick={handleEditClick}
+        onClick={handleEditClick}
         alt="Delete"
-      />
+      /> */}
       <img src={View} onClick={handleClick} alt="Edit" />
       {roles === "admin" || roles === "editor" ? (
         <>

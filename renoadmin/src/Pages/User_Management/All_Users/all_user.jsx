@@ -105,7 +105,7 @@ const Action = ({ username, email, phone, uid, picUrl, role }) => {
             <img src={Suspend} onClick={handleSuspendClick} alt="Suspend" />
           </>
         ) : null}
-        <img src={View} onClick={handleViewClick} alt="View" />
+        {/* <img src={View} onClick={handleViewClick} alt="View" /> */}
       </div>
       {showPopup && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
