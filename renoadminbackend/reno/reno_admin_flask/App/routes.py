@@ -74,26 +74,41 @@ def getAllCategoryList():
         return json.dumps({'success':False, "msg":"Something Went Wrong."}), 402, {'ContentType':'application/json'}
     
 
-# @app.route("/editCategoryList", methods=["GET"])
-# def editCategoryList():
-#     projects = db["projects_db"]
-#     data = request.json
-#     code = data['code']
-#     if projects.find_one({"code": code}) is None:
-#         return f"Project with code {code} does not exists in the database"
-#     data = {
-#         "code": code,
-#         "p_name": data['p_name'],
-#         "dev": data['dev'],
-#         "constr": data['constr'],
-#         "cont": data['cont'],
-#         "period": data['period'],
-#         "geo": data['geo'],
-#         "start_date": data['start_date'],
-#         "end_date": data['end_date'],
-#         "c_name": data['c_name'],
-#         "a_cname": data['a_cname']
-#     }
-#     new_values = {"$set": data}
-#     projects.update_one({"code": code}, new_values)
-#     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+@app.route("/editCategoryList", methods=["PUT"])
+def editCategoryList():
+    categoryList = db["categoryList"]
+
+    category_id = request.form['category_id']
+
+    if categoryList.find_one({"category_id": category_id}) is None:
+        return f"Category with category_id {category_id} does not exists in the database"
+    
+    category_info_obj = categoryList.find_one({"category_id": category_id})
+
+    if request.method == 'POST' or request.method == 'PUT':
+        if 'pic_url' not in request.files:
+            pic_url_str = category_info_obj["pic_url"]
+        else:
+            pic_url = request.files['pic_url']
+            if pic_url.filename == '':
+                return 'No selected file'
+            if pic_url and allowed_file(pic_url.filename):
+                ofn = pic_url.filename
+                a = ofn.split('.')
+                ext = a[-1]
+                fn = str(category_id)+"."+ext
+                filename = secure_filename(fn)
+                UPLOAD_FOLDER_NAME = UPLOAD_FOLDER+"/categoryList"
+                pic_url.save(os.path.join(UPLOAD_FOLDER_NAME, filename))
+
+        if 'category_name' not in request.form:
+            category_name = category_info_obj["category_name"]
+        else:
+            category_name = request.form['category_name']
+    data = {
+        "pic_url" : pic_url,
+        "category_name" : category_name
+    }
+    new_values = {"$set": data}
+    categoryList.update_one({"category_id": category_id}, new_values)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
