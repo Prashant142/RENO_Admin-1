@@ -55,7 +55,7 @@ def addcategoryList():
         categoty_db.insert_one(data)
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
     except Exception as e:
-         return json.dumps({'success':False, "msg":"Something Went Wrong.", "reason":e}), 402, {'ContentType':'application/json'}
+         return json.dumps({'success':False, "msg":"Something Went Wrong.", "reason":str(e)}), 402, {'ContentType':'application/json'}
     
 
 @app.route("/getAllCategoryList", methods=["GET"])
