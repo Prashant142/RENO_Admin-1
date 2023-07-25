@@ -18,10 +18,12 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
   const [pack, setPack] = useState("");
   const [offer, setOffer] = useState("");
   const [date, setDate] = useState("");
+  const [datend, setDatend] = useState("");
   const [offerby, setOfferby] = useState("");
   const [id, setId] = useState("");
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState("");
+  const [categoryProduct, setCategoryProduct] = useState("");
   const [promotion, setPromotion] = useState("");
 
   const handleSubmit = async (event) => {
@@ -53,6 +55,9 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
+  };
+  const handleProductCategoryChange = (event) => {
+    setCategoryProduct(event.target.value);
   };
   const handlePromotionChange = (event) => {
     setPromotion(event.target.value);
@@ -95,7 +100,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                   Promotion Code
                   <input
                     type="text"
-                    placeholder="Enter Promotion Id"
+                    placeholder="Enter Promotion code"
                     id="title"
                     className="rounded w-[50vh] outline-none"
                     style={{
@@ -129,8 +134,8 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                     required
                   />
                 </label>
-                {/* <label className="grid">
-              Catagory
+                <label className="grid">
+              Products
               <select
                 id="label"
                 name="label"
@@ -143,14 +148,17 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                   marginTop: "5px",
                   fontSize: "14px",
                 }}
-                value={category}
-                onChange={handleCategoryChange}
+                value={categoryProduct}
+                onChange={handleProductCategoryChange}
               >
-                <option value="">Select Catagory</option>
-                <option value="Product">Product</option>
-                <option value="Service">Service</option>
+                <option value="">Select Products</option>
+                <option value="Product-1">Product-1</option>
+                <option value="Product-2">Product-2</option>
+                <option value="Product-3">Product-3</option>
+                <option value="Product-4">Product-4</option>
+                <option value="Product-5">Product-5</option>
               </select>
-            </label> */}
+            </label>
                 <label className="grid">
                   Package
                   <input
@@ -257,7 +265,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
               />
             </label> */}
                 <label className="grid">
-                  Date of Expiration
+                  Offer valid from
                   <input
                     type="date"
                     value={date}
@@ -275,6 +283,25 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                     required
                   />
                 </label>
+                <label className="grid">
+                  Offer valid upto
+                  <input
+                    type="date"
+                    value={datend}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      border: "2px solid 	#e6f7fe",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDatend(event.target.value)}
+                    required
+                  />
+                </label>
               </div>
             )}
             {category == "Shipping" && (
@@ -283,7 +310,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                   Promotion Code
                   <input
                     type="text"
-                    placeholder="Enter Promotion Id"
+                    placeholder="Enter Promotion code"
                     id="title"
                     className="rounded w-[50vh] outline-none"
                     style={{
@@ -339,7 +366,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                 <option value="Service">Service</option>
               </select>
             </label> */}
-                <label className="grid">
+                {/* <label className="grid">
                   Package
                   <input
                     type="text"
@@ -357,7 +384,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                     onChange={(event) => setPack(event.target.value)}
                     required
                   />
-                </label>
+                </label> */}
                 <label className="grid">
                   Minimum Shopping
                   <input
@@ -483,7 +510,7 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
               />
             </label> */}
                 <label className="grid">
-                  Date of Expiration
+                  Offer valid from
                   <input
                     type="date"
                     value={date}
@@ -498,6 +525,25 @@ const AddPromotion = ({ setExpand, setActiveTab }) => {
                       fontSize: "14px",
                     }}
                     onChange={(event) => setDate(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Offer valid upto
+                  <input
+                    type="date"
+                    value={datend}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      border: "2px solid 	#e6f7fe",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDatend(event.target.value)}
                     required
                   />
                 </label>

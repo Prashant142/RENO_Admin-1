@@ -103,7 +103,7 @@ const AllProjects = ({ setActiveTab, setExpand }) => {
 
   const columns = [
     {
-      header: "Product ID",
+      header: "Promotion code",
       accessor: "productid",
     },
     {

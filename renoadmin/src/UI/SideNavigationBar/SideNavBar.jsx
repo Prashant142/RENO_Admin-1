@@ -264,7 +264,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setActiveTab("crud");
                         setExpand("showcaseManagement");
                       }}>
-                      CRUD Category
+                      Category
                     </NavLink>
                   </div>
                   <div className="ml-7 mt-2">

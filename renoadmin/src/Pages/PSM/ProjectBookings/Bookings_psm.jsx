@@ -161,7 +161,7 @@ const Psm_Bookings = () => {
                     <p>{selectedEvent.rate}</p>
                   </div>
                 </div>
-                {/* <div className="flex flex-row gap-10 pt-10">
+                <div className="flex flex-row gap-10 pt-10">
                   <button
                     className="px-4 py-2 rounded-md bg-yellow-500 hover:bg-yellow-700 text-white "
                     onClick={handleEditPopup} // Open the edit popup on button click
@@ -174,7 +174,7 @@ const Psm_Bookings = () => {
                   >
                     Assign Consultant
                   </button>
-                </div> */}
+                </div>
               </div>
             </div>
           )}
@@ -196,6 +196,20 @@ const Psm_Bookings = () => {
                 </div>
                 <div>
                   <form action="submit" className="flex flex-col gap-5">
+                  <div className="flex flex-row justify-between items-center gap-5">
+                      <label>Title :</label>
+                      <input
+                        className="border border-blue-300 cursor-pointer rounded-md w-2/3 px-4 py-2"
+                        type="text"
+                      />
+                    </div>
+                  <div className="flex flex-row justify-between items-center gap-5">
+                      <label>Description :</label>
+                      <input
+                        className="border border-blue-300 cursor-pointer rounded-md w-2/3 px-4 py-2"
+                        type="text"
+                      />
+                    </div>
                     <div className="flex flex-row justify-between items-center gap-5">
                       <label>Date :</label>
                       <input
