@@ -27,6 +27,7 @@ def addcategoryList():
     try:
         categoty_db = db["categoryList"]
         category_id = int(round(time.time() * 1000))
+        category_id = str(category_id)
 
         if request.method == 'POST':
             if 'pic_url' not in request.files:
@@ -49,7 +50,7 @@ def addcategoryList():
         data = {
             "category_name": request.form['category_name'],
             "pic_url": "http://139.59.236.50/Renoadmin/categoryList/"+filename,
-            "category_id":category_id
+            "category_id":str(category_id)
         }
 
         categoty_db.insert_one(data)
@@ -106,7 +107,7 @@ def editCategoryList():
         else:
             category_name = request.form['category_name']
     data = {
-        "pic_url" : pic_url,
+        "pic_url" : pic_url_str,
         "category_name" : category_name
     }
     new_values = {"$set": data}
