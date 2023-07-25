@@ -25,44 +25,54 @@ const Vieworder = () => {
       </div>
       <div className="ml-80 mt-20 relative flex flex-col">
         {/* Top Section */}
-        <div className="bg-[#EEEEEE] mt-8 w-full drop-shadow-md border flex flex-row gap-28 px-3 py-4">
-          <div>
-            <label>Payment Status</label>
-            <div className="mt-2">
-              <select
-                id="select"
-                value={selectedOption}
-                onChange={handleOptionChange}
-                className="w-full px-4 py-2 border rounded focus:outline-none ">
-                <option value="paid">Paid</option>
-                <option value="unpaid">Unpaid</option>
-                <option value="refunded">Refunded</option>
-              </select>
+        <div>
+          <form action="">
+            <div className="bg-[#EEEEEE] mt-8 w-full drop-shadow-md border flex flex-row gap-28 px-3 py-4">
+              <div>
+                <label>Payment Status</label>
+                <div className="mt-2">
+                  <select
+                    id="select"
+                    value={selectedOption}
+                    onChange={handleOptionChange}
+                    className="w-full px-4 py-2 border rounded focus:outline-none "
+                  >
+                    <option value="paid">Paid</option>
+                    <option value="unpaid">Unpaid</option>
+                    <option value="refunded">Refunded</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label>Delivery Status</label>
+                <div className="mt-2">
+                  <select
+                    id="select"
+                    value={selectedOption}
+                    onChange={handleOptionChange}
+                    className="w-full px-4 py-2 border rounded focus:outline-none "
+                  >
+                    {deliveryOptions.map((item) => (
+                      <option value={item}>{item}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label>Tracking Code (optional)</label>
+                <div className="mt-2">
+                  <input
+                    className="w-full px-4 py-2 border rounded focus:outline-none"
+                    type="text"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-center">
+                <button className="bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold mt-5" style={{ height:"5vh", width:"15vh", color:"white"}}>Update</button>
+              </div>
             </div>
-          </div>
-          <div>
-            <label>Delivery Status</label>
-            <div className="mt-2">
-              <select
-                id="select"
-                value={selectedOption}
-                onChange={handleOptionChange}
-                className="w-full px-4 py-2 border rounded focus:outline-none ">
-                {deliveryOptions.map((item) => (
-                  <option value={item}>{item}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div>
-            <label>Tracking Code (optional)</label>
-            <div className="mt-2">
-              <input
-                className="w-full px-4 py-2 border rounded focus:outline-none"
-                type="text"
-              />
-            </div>
-          </div>
+          </form>
         </div>
         {/* Order Summary Section */}
         <div className="bg-[#EEEEEE] mt-8 w-full drop-shadow-md border flex flex-col gap-8 px-3 py-4">

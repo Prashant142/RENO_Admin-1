@@ -122,7 +122,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
               <div
                 className="text-gray-500"
                 style={{ marginLeft: "20px", fontSize: "13px" }}>
-                Address
+                User Type
               </div>
               <div
                 className=""
@@ -132,11 +132,11 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                   fontSize: "15px",
                 }}>
                 {/* {user.address} */}
-                This is address field
+                {user.role}
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             className="grid grid-cols-2"
             style={{ gap: "150px", marginTop: "10px" }}>
             <div>
@@ -151,15 +151,14 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
                   fontWeight: "bold",
                   fontSize: "15px",
                 }}>
-                {/* {user.about} */}
                 This is about user section.
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Order History */}
-      <div className="ml-72" style={{ marginTop: "20px", zIndex: -1 }}>
+      {/* <div className="ml-72" style={{ marginTop: "20px", zIndex: -1 }}>
         <div className="font-bold text-3xl pt-10 pb-5">Purchased Products</div>
         <div className="grid grid-cols-4 gap-6">
           <div
@@ -410,7 +409,7 @@ const ViewUser = ({ setActiveTab, setExpand }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -5,7 +5,9 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addNewShowcase } from "../../User_Management/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 const AddNewShowcase = ({ setExpand, setActiveTab }) => {
   // setExpand("showcaseManagement");
   setActiveTab("projectList");
@@ -71,7 +73,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
 
       <div
         className=" ml-80 mb-10 w-[100vh] relative"
-        style={{ marginTop: "120px" }}>
+        style={{ marginTop: "120px" }}
+      >
         <form onSubmit={handleSubmit}>
           <label className="grid mt-5">
             Project Title
@@ -110,7 +113,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
                   fontSize: "14px",
                 }}
                 value={userType}
-                onChange={handleUserTypeChange}>
+                onChange={handleUserTypeChange}
+              >
                 <option value="">Select Catagory</option>
                 {productCategory.map((item) => {
                   return <option value={`${item}`}>{item}</option>;
@@ -143,9 +147,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
                 />
               </div>
             </label>
-          </div>
 
-          <div>
+          {/* <div> */}
             <label className="grid mt-5" style={{ fontSize: "15px" }}>
               Upload Photos
               <input
@@ -157,9 +160,16 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
                 multiple
                 onChange={handleImageUpload}
                 required
-              />
+                />
             </label>
-          </div>
+            <label style={{marginTop:"7.5vh", marginLeft:"4vh"}}>
+              <FormControlLabel
+                control={<Checkbox  />}
+                label="Featured Status"
+                />
+            </label>
+          {/* </div> */}
+                </div>
           <div style={{ width: "600px", marginTop: "10px" }}>
             {images && images.length > 0 && (
               <div className="grid grid-cols-6 gap-2">
@@ -221,7 +231,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
               color: "white",
             }}
             type="submit"
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+          >
             Publish
           </button>
           {/* <button
@@ -243,7 +254,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
               height: "55px",
               color: "white",
               marginLeft: "30px",
-            }}>
+            }}
+          >
             <Link to="/home/projectList">Back</Link>
           </button>
         </form>

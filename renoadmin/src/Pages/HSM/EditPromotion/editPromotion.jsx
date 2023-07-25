@@ -25,6 +25,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
   const [pack, setPack] = useState(data.rate);
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState(data.category);
+  const [categoryProduct, setCategoryProduct] = useState(data.category);
   const [promotion, setPromotion] = useState(data.inventory);
 
   const handleSubmit = async (event) => {
@@ -56,6 +57,9 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
+  };
+  const handleProductCategoryChange = (event) => {
+    setCategoryProduct(event.target.value);
   };
   const handlePromotionChange = (event) => {
     setPromotion(event.target.value);
@@ -133,28 +137,31 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                   required
                 />
               </label>
-              {/* <label className="grid"> */}
-                {/* Catagory
-                <select
-                  id="label"
-                  name="label"
-                  className="outline-none w-[50vh] rounded"
-                  style={{
-                    height: "50px",
-                    // width: "590px",
-                    paddingLeft: "5px",
-                    backgroundColor: "#e5ecff",
-                    marginTop: "5px",
-                    fontSize: "14px",
-                  }}
-                  value={category}
-                  onChange={handleCategoryChange}
-                >
-                  <option value="">Select Catagory</option>
-                  <option value="Service">Service</option>
-                  <option value="Product">Product</option>
-                </select>
-              </label> */}
+              <label className="grid">
+              Products
+              <select
+                id="label"
+                name="label"
+                className="outline-none w-[50vh] rounded"
+                style={{
+                  height: "50px",
+                  // width: "590px",
+                  paddingLeft: "5px",
+                  backgroundColor: "#e5ecff",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}
+                value={categoryProduct}
+                onChange={handleProductCategoryChange}
+              >
+                <option value="">Select Products</option>
+                <option value="Product-1">Product-1</option>
+                <option value="Product-2">Product-2</option>
+                <option value="Product-3">Product-3</option>
+                <option value="Product-4">Product-4</option>
+                <option value="Product-5">Product-5</option>
+              </select>
+            </label>
               <label className="grid">
                 Package
                 <input
@@ -284,7 +291,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                   Promotion Code
                   <input
                     type="text"
-                    placeholder="Enter Promotion Id"
+                    placeholder="Enter Promotion code"
                     id="title"
                     className="rounded w-[50vh] outline-none"
                     style={{
@@ -340,7 +347,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                 <option value="Service">Service</option>
               </select>
             </label> */}
-                <label className="grid">
+                {/* <label className="grid">
                   Package
                   <input
                     type="text"
@@ -358,7 +365,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                     onChange={(event) => setPack(event.target.value)}
                     required
                   />
-                </label>
+                </label> */}
                 <label className="grid">
                   Minimum Shopping
                   <input
