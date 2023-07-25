@@ -101,6 +101,7 @@ def editCategoryList():
                 filename = secure_filename(fn)
                 UPLOAD_FOLDER_NAME = UPLOAD_FOLDER+"/categoryList"
                 pic_url.save(os.path.join(UPLOAD_FOLDER_NAME, filename))
+                pic_url_str = "http://139.59.236.50/Renoadmin/categoryList/"+filename
 
         if 'category_name' not in request.form:
             category_name = category_info_obj["category_name"]
