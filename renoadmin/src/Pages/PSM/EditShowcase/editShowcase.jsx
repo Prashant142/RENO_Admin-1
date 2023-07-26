@@ -5,6 +5,8 @@ import DisabledByDefaultRoundedIcon from "@mui/icons-material/DisabledByDefaultR
 import { useDispatch } from "react-redux";
 import { updateShowcase } from "../../User_Management/features/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const EditShowcase = ({ setExpand, setActiveTab }) => {
   const fileInputRef = useRef(null);
@@ -107,7 +109,7 @@ const EditShowcase = ({ setExpand, setActiveTab }) => {
             />
           </label>
 
-          <div className="grid grid-cols-2 mt-5">
+          <div className="grid grid-cols-2 gap-4 mt-5">
             <label className="grid pr-6">
               Category
               <select
@@ -124,7 +126,8 @@ const EditShowcase = ({ setExpand, setActiveTab }) => {
                   backgroundColor: "#e5ecff",
                 }}
                 value={label}
-                onChange={handleLabelChange}>
+                onChange={handleLabelChange}
+              >
                 <option value="">Select Catagory</option>
                 {productCategory.map((item) => {
                   return <option value={`${item}`}>{item}</option>;
@@ -158,53 +161,66 @@ const EditShowcase = ({ setExpand, setActiveTab }) => {
               </div>
             </label>
           </div>
-          <label className="grid pr-6" style={{ marginTop: "20px" }}>
-            Photos
-            <div className="w-[100vh]" style={{ marginTop: "10px" }}>
-              {images && images.length > 0 ? (
-                <div className="grid grid-cols-4 gap-2">
-                  {images.map((image, index) => (
-                    <div key={index} className="relative">
-                      <img
-                        src={URL.createObjectURL(image)}
-                        alt={image.name}
-                        style={{
-                          width: "100px",
-                          height: "100px",
-                          objectFit: "cover",
-                          marginRight: "10px",
-                        }}
-                      />
-                      <button
-                        className="absolute top-0 text-white"
-                        style={{ right: 46 }}
-                        onClick={() => handleRemoveImage(index)}>
-                        <DisabledByDefaultRoundedIcon style={{ fill: "red" }} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <input
-                  style={{
-                    height: "48px",
-                    width: "590px",
-                    paddingLeft: "0px",
-                    border: "2px solid 	#e6f7fe",
-                    marginTop: "5px",
-                    fontSize: "14px",
-                  }}
-                  class="file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handlePhotoUpload}
-                  placeholder=""
-                  required
-                />
-              )}
-            </div>
-          </label>
+
+          <div className="flex ">
+            <label className="grid pr-6" style={{ marginTop: "20px" }}>
+              Photos
+              <div className="w-[100vh]" style={{ marginTop: "10px" }}>
+                {images && images.length > 0 ? (
+                  <div className="grid grid-cols-4 gap-2">
+                    {images.map((image, index) => (
+                      <div key={index} className="relative">
+                        <img
+                          src={URL.createObjectURL(image)}
+                          alt={image.name}
+                          style={{
+                            width: "100px",
+                            height: "100px",
+                            objectFit: "cover",
+                            marginRight: "10px",
+                          }}
+                        />
+                        <button
+                          className="absolute top-0 text-white"
+                          style={{ right: 46 }}
+                          onClick={() => handleRemoveImage(index)}
+                        >
+                          <DisabledByDefaultRoundedIcon
+                            style={{ fill: "red" }}
+                          />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <input
+                    style={{
+                      height: "48px",
+                      width: "376px",
+                      paddingLeft: "0px",
+                      border: "2px solid 	#e6f7fe",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    class="file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handlePhotoUpload}
+                    placeholder=""
+                    required
+                  />
+                )}
+              </div>
+            </label>
+            <label style={{ marginTop: "7.5vh", position:"absolute", left:"60vh" }}>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Featured Status"
+              />
+            </label>
+          </div>
+
           <div style={{ fontSize: "10px", marginTop: "8px" }}>
             <ul className="list-disc ml-3 text-gray-500">
               <li>Allowed banner image extension .jpg | .jpeg | .png</li>
@@ -247,7 +263,8 @@ const EditShowcase = ({ setExpand, setActiveTab }) => {
               height: "55px",
               color: "white",
             }}
-            type="submit">
+            type="submit"
+          >
             Save
           </button>
           <button
@@ -257,7 +274,8 @@ const EditShowcase = ({ setExpand, setActiveTab }) => {
               height: "55px",
               color: "white",
               marginLeft: "30px",
-            }}>
+            }}
+          >
             <Link to="/home/projectList">Cancel</Link>
           </button>
         </form>

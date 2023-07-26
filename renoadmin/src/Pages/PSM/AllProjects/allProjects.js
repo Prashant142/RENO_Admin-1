@@ -55,7 +55,7 @@ const Action = ({ projId, projName, category, rate, type }) => {
         <>
           <img onClick={handleClick} src={edit} alt="edit" />
           <img src={deleteIcon} onClick={handleDeleteClick} alt="Delete" />
-          <FormControlLabel control={<Switch />}  />
+          {/* <FormControlLabel control={<Switch />}  /> */}
         </>
       ) : (
         "Not Accessible"

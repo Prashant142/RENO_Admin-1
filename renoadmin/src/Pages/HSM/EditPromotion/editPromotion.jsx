@@ -18,12 +18,14 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
   const [title, setTitle] = useState(data.name);
   const [offer, setOffer] = useState("");
   const [date, setDate] = useState("");
+  const [datend, setDatend] = useState("");
   const [offerby, setOfferby] = useState("");
   const [id, setId] = useState("");
   const [content, setContent] = useState(data.details);
   const [pack, setPack] = useState(data.rate);
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState(data.category);
+  const [categoryProduct, setCategoryProduct] = useState(data.category);
   const [promotion, setPromotion] = useState(data.inventory);
 
   const handleSubmit = async (event) => {
@@ -39,9 +41,9 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
       formData.append(`pic`, image);
     });
 
-    dispatch(editNewPromotion({formData, title}));
-    console.log("Back")
-    navigate('/home/promotionManagement')
+    dispatch(editNewPromotion({ formData, title }));
+    console.log("Back");
+    navigate("/home/promotionManagement");
   };
 
   const handlePhotoUpload = (event) => {
@@ -56,6 +58,9 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
+  const handleProductCategoryChange = (event) => {
+    setCategoryProduct(event.target.value);
+  };
   const handlePromotionChange = (event) => {
     setPromotion(event.target.value);
   };
@@ -68,48 +73,9 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
 
       <div className=" ml-80 mb-10 relative" style={{ marginTop: "120px" }}>
         <form onSubmit={handleSubmit}>
-
-          <div className="grid grid-cols-2 w-[98vh] gap-5 mt-5">
-          <label className="grid mt-5">
-            Promotion Id
-            <input
-              type="text"
-              placeholder="Enter Promotion Id"
-              id="title"
-              className="rounded w-[50vh] outline-none"
-              style={{
-                height: "50px",
-                paddingLeft: "10px",
-                backgroundColor: "#e5ecff",
-                marginTop: "5px",
-                fontSize: "15px",
-              }}
-              value={id}
-              onChange={(event) => setId(event.target.value)}
-              required
-            />
-          </label>
-          <label className="grid mt-5">
-            Promotion Title
-            <input
-              type="text"
-              placeholder="Enter Promotion Title"
-              id="title"
-              className="rounded w-[50vh] outline-none"
-              style={{
-                height: "50px",
-                paddingLeft: "10px",
-                backgroundColor: "#e5ecff",
-                marginTop: "5px",
-                fontSize: "15px",
-              }}
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              required
-            />
-          </label>
-            <label className="grid">
-              Catagory
+          <div>
+            <label className="grid mt-5">
+              Promotion Type
               <select
                 id="label"
                 name="label"
@@ -123,61 +89,86 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                   fontSize: "14px",
                 }}
                 value={category}
-                onChange={handleCategoryChange}>
-                <option value="">Select Catagory</option>
-                <option value="Service">Service</option>
-                <option value="Product">Product</option>
-                {/* <option value="Other">Other</option> */}
+                onChange={handleCategoryChange}
+              >
+                <option value="">Select Type</option>
+                <option value="Product">For Product</option>
+                <option value="Shipping">For Shipping</option>
               </select>
             </label>
-            <label className="grid">
-              Package
-              <input
-                type="text"
-                value={pack}
+
+            {category == "Product" && (
+            <div className="grid grid-cols-2 w-[98vh] gap-5 mt-5">
+              <label className="grid mt-5">
+                Promotion code
+                <input
+                  type="text"
+                  placeholder="Enter Promotion code"
+                  id="title"
+                  className="rounded w-[50vh] outline-none"
+                  style={{
+                    height: "50px",
+                    paddingLeft: "10px",
+                    backgroundColor: "#e5ecff",
+                    marginTop: "5px",
+                    fontSize: "15px",
+                  }}
+                  value={id}
+                  onChange={(event) => setId(event.target.value)}
+                  required
+                />
+              </label>
+              <label className="grid mt-5">
+                Promotion Title
+                <input
+                  type="text"
+                  placeholder="Enter Promotion Title"
+                  id="title"
+                  className="rounded w-[50vh] outline-none"
+                  style={{
+                    height: "50px",
+                    paddingLeft: "10px",
+                    backgroundColor: "#e5ecff",
+                    marginTop: "5px",
+                    fontSize: "15px",
+                  }}
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                  required
+                />
+              </label>
+              <label className="grid">
+              Products
+              <select
+                id="label"
+                name="label"
                 className="outline-none w-[50vh] rounded"
-                placeholder="$000.00"
                 style={{
                   height: "50px",
-                  // width: "586px",
-                  paddingLeft: "10px",
+                  // width: "590px",
+                  paddingLeft: "5px",
                   backgroundColor: "#e5ecff",
                   marginTop: "5px",
                   fontSize: "14px",
                 }}
-                onChange={(event) => setPack(event.target.value)}
-                required
-              />
+                value={categoryProduct}
+                onChange={handleProductCategoryChange}
+              >
+                <option value="">Select Products</option>
+                <option value="Product-1">Product-1</option>
+                <option value="Product-2">Product-2</option>
+                <option value="Product-3">Product-3</option>
+                <option value="Product-4">Product-4</option>
+                <option value="Product-5">Product-5</option>
+              </select>
             </label>
-            <label className="grid">
-              Offer
-              <div className="flex gap-1">
-                <select
-                  id="label"
-                  name="label"
-                  className="outline-none w-[12vh] rounded"
-                  style={{
-                    height: "50px",
-                    // width: "590px",
-                    paddingLeft: "5px",
-                    backgroundColor: "#e5ecff",
-                    marginTop: "5px",
-                    fontSize: "14px",
-                  }}
-                  value={offerby}
-                  onChange={(event) => setOfferby(event.target.value)}
-                >
-                  {/* <option value="">Offer by</option> */}
-                  <option value="Price">Price</option>
-                  <option value="Percent">Percent</option>
-                </select>
-                {/* <label className="grid">
-              Package */}
+              <label className="grid">
+                Package
                 <input
                   type="text"
-                  value={offer}
-                  className="outline-none w-[37.5vh] rounded"
-                  placeholder="000.00"
+                  value={pack}
+                  className="outline-none w-[50vh] rounded"
+                  placeholder="$000.00"
                   style={{
                     height: "50px",
                     // width: "586px",
@@ -186,32 +177,92 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                     marginTop: "5px",
                     fontSize: "14px",
                   }}
-                  onChange={(event) => setOffer(event.target.value)}
+                  onChange={(event) => setPack(event.target.value)}
                   required
                 />
-                {/* </label> */}
-              </div>
-            </label>
-            <label className="grid">
-              Date of Expiration
-              <input
-                type="date"
-                value={date}
-                className="outline-none w-[50vh] rounded"
-                placeholder="$000.00"
-                style={{
-                  height: "50px",
-                  // width: "586px",
-                  paddingLeft: "10px",
-                  backgroundColor: "#e5ecff",
-                  marginTop: "5px",
-                  fontSize: "14px",
-                }}
-                onChange={(event) => setDate(event.target.value)}
-                required
-              />
-            </label>
-            {/* <label className="grid">
+              </label>
+              <label className="grid">
+                Offer
+                <div className="flex gap-1">
+                  <select
+                    id="label"
+                    name="label"
+                    className="outline-none w-[12vh] rounded"
+                    style={{
+                      height: "50px",
+                      // width: "590px",
+                      paddingLeft: "5px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    value={offerby}
+                    onChange={(event) => setOfferby(event.target.value)}
+                  >
+                    {/* <option value="">Offer by</option> */}
+                    <option value="Price">Price</option>
+                    <option value="Percent">Percent</option>
+                  </select>
+                  {/* <label className="grid">
+              Package */}
+                  <input
+                    type="text"
+                    value={offer}
+                    className="outline-none w-[37.5vh] rounded"
+                    placeholder="000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setOffer(event.target.value)}
+                    required
+                  />
+                  {/* </label> */}
+                </div>
+              </label>
+              <label className="grid">
+                Offer valid from
+                <input
+                  type="date"
+                  value={date}
+                  className="outline-none w-[50vh] rounded"
+                  placeholder="$000.00"
+                  style={{
+                    height: "50px",
+                    // width: "586px",
+                    paddingLeft: "10px",
+                    backgroundColor: "#e5ecff",
+                    marginTop: "5px",
+                    fontSize: "14px",
+                  }}
+                  onChange={(event) => setDate(event.target.value)}
+                  required
+                />
+              </label>
+              <label className="grid">
+                Offer valid upto
+                <input
+                  type="date"
+                  value={datend}
+                  className="outline-none w-[50vh] rounded"
+                  placeholder="$000.00"
+                  style={{
+                    height: "50px",
+                    // width: "586px",
+                    paddingLeft: "10px",
+                    backgroundColor: "#e5ecff",
+                    marginTop: "5px",
+                    fontSize: "14px",
+                  }}
+                  onChange={(event) => setDatend(event.target.value)}
+                  required
+                />
+              </label>
+              {/* <label className="grid">
               Photos
               <input
                 className="w-[50vh]"
@@ -232,6 +283,253 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
                 required
               />
             </label> */}
+            </div>
+            )}
+            {category == "Shipping" && (
+              <div className="grid grid-cols-2 w-[98vh] gap-5 mt-5">
+                <label className="grid mt-5">
+                  Promotion Code
+                  <input
+                    type="text"
+                    placeholder="Enter Promotion code"
+                    id="title"
+                    className="rounded w-[50vh] outline-none"
+                    style={{
+                      height: "50px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "15px",
+                    }}
+                    value={id}
+                    onChange={(event) => setId(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid mt-5">
+                  Promotion Title
+                  <input
+                    type="text"
+                    placeholder="Enter Promotion Title"
+                    id="title"
+                    className="rounded w-[50vh] outline-none"
+                    style={{
+                      height: "50px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "15px",
+                    }}
+                    value={title}
+                    onChange={(event) => setTitle(event.target.value)}
+                    required
+                  />
+                </label>
+                {/* <label className="grid">
+              Catagory
+              <select
+                id="label"
+                name="label"
+                className="outline-none w-[50vh] rounded"
+                style={{
+                  height: "50px",
+                  // width: "590px",
+                  paddingLeft: "5px",
+                  border: "2px solid 	#e6f7fe",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}
+                value={category}
+                onChange={handleCategoryChange}
+              >
+                <option value="">Select Catagory</option>
+                <option value="Product">Product</option>
+                <option value="Service">Service</option>
+              </select>
+            </label> */}
+                {/* <label className="grid">
+                  Package
+                  <input
+                    type="text"
+                    value={pack}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setPack(event.target.value)}
+                    required
+                  />
+                </label> */}
+                <label className="grid">
+                  Minimum Shopping
+                  <input
+                    type="text"
+                    value={pack}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setPack(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Maximum Discount Amount
+                  <input
+                    type="text"
+                    value={pack}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setPack(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Offer
+                  <div className="flex gap-1">
+                    <select
+                      id="label"
+                      name="label"
+                      className="outline-none w-[12vh] rounded"
+                      style={{
+                        height: "50px",
+                        // width: "590px",
+                        paddingLeft: "5px",
+                        backgroundColor: "#e5ecff",
+                        marginTop: "5px",
+                        fontSize: "14px",
+                      }}
+                      value={offerby}
+                      onChange={(event) => setOfferby(event.target.value)}
+                    >
+                      {/* <option value="">Offer by</option> */}
+                      <option value="Price">Price</option>
+                      <option value="Percent">Percent</option>
+                    </select>
+                    {/* <label className="grid">
+              Package */}
+                    <input
+                      type="text"
+                      value={offer}
+                      className="outline-none w-[37.5vh] rounded"
+                      placeholder="000.00"
+                      style={{
+                        height: "50px",
+                        // width: "586px",
+                        paddingLeft: "10px",
+                        backgroundColor: "#e5ecff",
+                        marginTop: "5px",
+                        fontSize: "14px",
+                      }}
+                      onChange={(event) => setOffer(event.target.value)}
+                      required
+                    />
+                    {/* </label> */}
+                  </div>
+                </label>
+                {/* <label className="grid">
+              No Of Promotion
+              <select
+                id="label"
+                name="label"
+                className="outline-none w-[50vh] rounded"
+                style={{
+                  height: "50px",
+                  paddingLeft: "5px",
+                  border: "2px solid 	#e6f7fe",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}
+                value={promotion}
+                onChange={handlePromotionChange}
+              >
+                <option value="">No of Promotion</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </label> */}
+                {/* <label className="grid">
+              Photos
+              <input
+                className="w-[50vh]"
+                style={{
+                  height: "50px",
+                  // width: "590px",
+                  paddingLeft: "0px",
+                  border: "2px solid 	#e6f7fe",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}
+                class="w-[50vh] file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer mt-3 rounded appearance-none placeholder-transparent"
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handlePhotoUpload}
+                placeholder=""
+                required
+              />
+            </label> */}
+                <label className="grid">
+                  Offer valid from
+                  <input
+                    type="date"
+                    value={date}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDate(event.target.value)}
+                    required
+                  />
+                </label>
+                <label className="grid">
+                  Offer valid upto
+                  <input
+                    type="date"
+                    value={datend}
+                    className="outline-none w-[50vh] rounded"
+                    placeholder="$000.00"
+                    style={{
+                      height: "50px",
+                      // width: "586px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#e5ecff",
+                      marginTop: "5px",
+                      fontSize: "14px",
+                    }}
+                    onChange={(event) => setDatend(event.target.value)}
+                    required
+                  />
+                </label>
+              </div>
+            )}
           </div>
 
           {/* <div style={{ marginLeft: "385px", width: "600px", marginTop:"10px" }}>
@@ -284,7 +582,7 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
               color: "white",
             }}
             type="submit"
-            >
+          >
             Publish
           </button>
           {/* <button
@@ -306,8 +604,9 @@ const EditPromotion = ({ setExpand, setActiveTab }) => {
               color: "white",
               marginLeft: "30px",
             }}
-            type="submit">
-            <Link to='/home/promotionManagement'>Back</Link>
+            type="submit"
+          >
+            <Link to="/home/promotionManagement">Back</Link>
           </button>
         </form>
       </div>
