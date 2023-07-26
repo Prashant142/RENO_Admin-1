@@ -13,29 +13,44 @@ const InputField = () => {
       // Dummy data for demonstration purposes
       const data = [
         {
+          senderName: 'Micheal',
+          senderRole: 'Admin',
           note: "This is the first internal note.",
           file: null,
-          dateAdded: "19-02-2023"
+          dateAdded: "19-02-2023",
+          timeAdded: '04:56'
         },
         {
+          senderName: 'Alex',
+          senderRole: 'User',
           note: "This is the second internal note with an attached file.",
           file: "https://www.africau.edu/images/default/sample.pdf",
-          dateAdded: "19-02-2023"
+          dateAdded: "19-02-2023",
+          timeAdded: '04:56'
         },
         {
+          senderName: 'Micheal',
+          senderRole: 'Admin',
           note: "This is the third internal note.",
           file: null,
-          dateAdded: "19-02-2023"
+          dateAdded: "19-02-2023",
+          timeAdded: '04:56'
         },
         {
-          note: "This is the fourth internal note.",
+          senderName: 'Alex',
+          senderRole: 'User',
+          note: "This is the fourth internal note Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque quo impedit provident error tenetur eum iusto blanditiis harum earum soluta, itaque nam molestiae quasi aperiam corrupti, voluptate esse labore saepe!.",
           file: null,
-          dateAdded: "19-02-2023"
+          dateAdded: "19-02-2023",
+          timeAdded: '04:56'
         },
         {
+          senderName: 'Micheal',
+          senderRole: 'Admin',
           note: "This is the fifth internal note.",
           file: null,
-          dateAdded: "19-02-2023"
+          dateAdded: "19-02-2023",
+          timeAdded: '04:56'
         },
       ];
 
@@ -72,14 +87,17 @@ const InputField = () => {
             <div className="flex justify-between">
               <div className="font-bold">Internal Note</div>
               <div>
-                {log.dateAdded}
+                {log.timeAdded} / {log.dateAdded}
               </div>
             </div>
-            <div className="mt-2">{log.note}</div>
+            <div className="flex justify-between">
+              <div className="mt-2">{log.note}</div>
+              <div className="rounded-full self-start ms-auto mt-2 bg-white shadow px-4 py-2 w-fit flex"> {log.senderName} <div className="bg-red-500 text-sm text-white px-2 ms-1 self-start rounded-full">{log.senderRole}</div></div>
+            </div>
             {log.file && (
               <div className="mt-4">
                 <div className="font-bold">Attached File:</div>
-                <img
+                <embed
                   src={log.file}
                   alt="Attached File"
                   className="mt-2 max-w-xs"

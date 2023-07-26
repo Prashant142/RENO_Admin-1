@@ -4,6 +4,8 @@ import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from "axios";
+import CloseIcon from '@mui/icons-material/Close';
+
 
 const localizer = momentLocalizer(moment);
 
@@ -52,6 +54,7 @@ const Psm_Bookings = () => {
         <div>Person: {event.user}</div>
         <div>Status: {event.status}</div>
         <div>Price: {event.rate}</div>
+        <div>Venue: lorem ipsum dolor sit amit</div>
       </div>
     );
   };
@@ -126,39 +129,50 @@ const Psm_Bookings = () => {
                   <button
                     className="float-right font-bold text-3xl hover:text-red-700 focus:outline-none text-red-500"
                     onClick={handleClosePopup}>
-                    x
+                    <CloseIcon />
                   </button>
                 </div>
-                <div className="flex flex-col gap-5">
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl">Title : </label>
-                    <p>{selectedEvent.title}</p>
+                <div className="flex gap-5">
+                  <div style={{ maxHeight: '22rem' }} className="max-w-sm flex flex-col gap-3 overflow-auto">
+                    <img src="https://th.bing.com/th/id/OIP.otBKS2Z14l7A5n1CB_Mn6AEsCo?pid=ImgDet&rs=1" className="w-full rounded-md h-auto" alt="" />
+                    <img src="https://th.bing.com/th/id/OIP.otBKS2Z14l7A5n1CB_Mn6AEsCo?pid=ImgDet&rs=1" className="w-full rounded-md h-auto" alt="" />
+                    <img src="https://th.bing.com/th/id/OIP.otBKS2Z14l7A5n1CB_Mn6AEsCo?pid=ImgDet&rs=1" className="w-full rounded-md h-auto" alt="" />
                   </div>
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl">
-                      Description :{" "}
-                    </label>
-                    <p>{selectedEvent.description}</p>
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl">Date : </label>
-                    <p>{moment(selectedEvent.start).format("YYYY-MM-DD")}</p>
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl"> Time :</label>
-                    <p> {moment(selectedEvent.start).format("HH:mm")}</p>
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl">Person : </label>
-                    <p>{selectedEvent.user}</p>
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <label className="text-blue-600 text-xl">Status : </label>
-                    <p>{selectedEvent.status}</p>
-                  </div>
-                  <div className="flex flex-row text-left justify-between">
-                    <label className="text-blue-600 text-xl">Price: </label>
-                    <p>{selectedEvent.rate}</p>
+                  <div className="flex flex-col gap-5 max-w-md">
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl">Title : </label>
+                      <p>{selectedEvent.title}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl">
+                        Description :{" "}
+                      </label>
+                      <p>{selectedEvent.description}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl">Date : </label>
+                      <p>{moment(selectedEvent.start).format("YYYY-MM-DD")}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl"> Time :</label>
+                      <p> {moment(selectedEvent.start).format("HH:mm")}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl">Person : </label>
+                      <p>{selectedEvent.user}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl">Status : </label>
+                      <p>{selectedEvent.status}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row text-left justify-between">
+                      <label className="text-blue-600 text-xl">Price: </label>
+                      <p>{selectedEvent.rate}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row text-left justify-between">
+                      <label className="text-blue-600 text-xl">Venue: </label>
+                      <p className="text-end">lorem ipsum dolor sit amit constrtuctoror.</p>
+                    </div>
                   </div>
                 </div>
                 {/* <div className="flex flex-row gap-10 pt-10">
@@ -256,6 +270,7 @@ const Psm_Bookings = () => {
                         className="px-4 py-2 rounded-md border border-blue-300 cursor-pointer"
                         name="assign_consultant"
                         id="">
+                        <option value="none">Not Assigned</option>
                         {allUserDropdown.map((user) => {
                           return (
                             <option value={user.username}>

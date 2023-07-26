@@ -4,6 +4,7 @@ import TopHeader from "../../../UI/TopHeader/TopHeader";
 import { useDispatch } from "react-redux";
 import { updateListing } from "../../User_Management/features/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import AllChats from "../AllChats/allchats";
 
 const EditListing = ({ setExpand, setActiveTab }) => {
   // setExpand("marketPlace");
@@ -11,7 +12,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
   const head = "Edit Listing";
   const dispatch = useDispatch();
   const location = useLocation();
-  const data=location.state;
+  const data = location.state;
 
   const [title, setTitle] = useState(data.name);
   const [category, setCategory] = useState("");
@@ -70,7 +71,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
         <TopHeader className="fixed" head={head} />
       </div>
 
-      <div className=" ml-80 mb-10 relative" style={{ marginTop: "120px" }}>
+      <div className=" ml-80 mb-10 relative w-[60vw] overflow-hidden" style={{ marginTop: "120px" }}>
         <form onSubmit={handleSubmit}>
           <label className="grid mt-5">
             Service Name
@@ -78,7 +79,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
               type="text"
               placeholder="Electician Services"
               id="title"
-              className="rounded w-[100vh] outline-none"
+              className="rounded outline-none"
               style={{
                 height: "50px",
                 paddingLeft: "10px",
@@ -97,7 +98,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
               type="text"
               placeholder="Enter Service area"
               id="area"
-              className="rounded w-[100vh] outline-none"
+              className="rounded outline-none"
               style={{
                 height: "50px",
                 paddingLeft: "10px",
@@ -111,7 +112,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
             />
           </label>
 
-          <div className="grid grid-cols-2 w-[100vh] gap-2 mt-5">
+          <div className="grid grid-cols-2 gap-2 mt-5">
             <label className="grid">
               Price
               <input
@@ -197,7 +198,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
             <textarea
               id="content"
               placeholder="Enter Description"
-              className="rounded w-[100vh] outline-none pt-2"
+              className="rounded outline-none pt-2"
               style={{
                 height: "170px",
                 backgroundColor: "#e5ecff",
@@ -214,29 +215,30 @@ const EditListing = ({ setExpand, setActiveTab }) => {
           {/* <div> */}
           {/* </div> */}
         </form>
-          <button
-            className="rounded mt-10 bg-lime-600 hover:bg-lime-700"
-            style={{
-              width: "170px",
-              height: "55px",
-              color: "white",
-            }}
-            type="submit"
-            onClick={handleSubmit}>
-            Save
-          </button>
-          <button
-            className="rounded mt-10 bg-black hover:bg-gray-800"
-            style={{
-              width: "170px",
-              height: "55px",
-              color: "white",
-              marginLeft: "30px",
-            }}
-            type="submit">
-            <Link to='/home/listingManagement'>Cancel</Link>
-          </button>
+        <button
+          className="rounded mt-10 bg-lime-600 hover:bg-lime-700"
+          style={{
+            width: "170px",
+            height: "55px",
+            color: "white",
+          }}
+          type="submit"
+          onClick={handleSubmit}>
+          Save
+        </button>
+        <button
+          className="rounded mt-10 bg-black hover:bg-gray-800"
+          style={{
+            width: "170px",
+            height: "55px",
+            color: "white",
+            marginLeft: "30px",
+          }}
+          type="submit">
+          <Link to='/home/listingManagement'>Cancel</Link>
+        </button>
       </div>
+      <AllChats />
     </div>
   );
 };

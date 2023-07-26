@@ -92,10 +92,6 @@ const ListingData = ({ setActiveTab, setExpand }) => {
   // setExpand("marketPlace");
   setActiveTab("listingManagement");
   const Navigate = useNavigate();
-  const greenClicked = () => {
-    Navigate("/home/addListing");
-  };
-
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -148,7 +144,6 @@ const ListingData = ({ setActiveTab, setExpand }) => {
     ),
   }));
 
-  const greenButtonText = "Add New Listing";
 
   // Number of Pages to be display on a single page.
   const pageSize = 4;
@@ -179,10 +174,6 @@ const ListingData = ({ setActiveTab, setExpand }) => {
             columns={columns}
             data={data}
             pageSize={pageSize}
-            greenButtonText={
-              roles === "admin" || roles === "editor" ? greenButtonText : ""
-            }
-            greenClicked={greenClicked}
           />
         ) : (
           <>
@@ -190,10 +181,6 @@ const ListingData = ({ setActiveTab, setExpand }) => {
               columns={columns}
               data={data}
               pageSize={pageSize}
-              greenButtonText={
-                roles === "admin" || roles === "editor" ? greenButtonText : ""
-              }
-              greenClicked={greenClicked}
             />
             <div className="flex ml-5 justify-center w-full mt-40">
               <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>

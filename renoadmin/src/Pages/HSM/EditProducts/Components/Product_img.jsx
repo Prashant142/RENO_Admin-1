@@ -23,7 +23,7 @@ const Product_img = () => {
 
   return (
     <div>
-      <div className="bg-[#EEEEEE] p-5 rounded-md shadow-md w-[80vh] border">
+      <div className="bg-[#EEEEEE] p-5 rounded-md shadow-md  border">
         <p className="pb-5">Product Information</p>
         <hr />
         <form className="pt-5 flex flex-col gap-5" action="submit">

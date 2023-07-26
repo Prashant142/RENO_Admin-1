@@ -2,8 +2,8 @@ import React from "react";
 
 const Other = () => {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border w-[50vh]">
+    <div className="flex flex-col gap-5 ">
+      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border">
         <p className="pb-5">Low Stock Quantity Warning</p>
         <hr />
         <form className="flex  flex-col gap-3 mt-3">
@@ -14,7 +14,7 @@ const Other = () => {
           />
         </form>
       </div>
-      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border w-[50vh]">
+      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border">
         <p className="pb-5">Featured</p>
         <hr />
         <form className="flex  flex-row  gap-10 mt-3">
@@ -22,7 +22,7 @@ const Other = () => {
           <input type="checkbox" />
         </form>
       </div>
-      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border w-[50vh]">
+      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border">
         <p className="pb-5">Estimate Shipping Time</p>
         <hr />
         <form className="flex  flex-col gap-3 mt-3">

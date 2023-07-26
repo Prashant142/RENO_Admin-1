@@ -6,7 +6,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import CloseIcon from '@mui/icons-material/Close';
 
-const Chatdetails = ({ onClose, name, status, tid }) => {
+const Chatdetails = ({ onClose, name, status, tid, page }) => {
 
   const [isInputDisabled, setIsInputDisabled] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -277,39 +277,41 @@ const Chatdetails = ({ onClose, name, status, tid }) => {
 
         </div>
       </div>
-      <div
-        className="p-3 bg-white flex justify-between items-center"
-        style={{ position: "sticky", bottom: 0 }}
-      >
-        <input
-          className="bg-gray-200"
-          style={{
-            width: "320px",
-            height: "40px",
-            borderRadius: "60px",
-            outline: "none",
-            paddingLeft: "10px",
-          }}
-          disabled={isInputDisabled}
-          type="text"
-          placeholder="Type here..."
-          onChange={(e) => setInputValue(e.target.value)}
-          value={inputValue}
-        />
-        <button
-          className="ms-4 p-5 rounded-full flex items-center justify-center bg-black cursor-pointer"
-          style={{
-            border: "1px solid",
-            height: "30px",
-            width: "30px",
-            color: "white",
-          }}
-          disabled={isInputDisabled}
-          onClick={handleSendMessage}
+      {page == 'allChats' ? (<></>) : (<>
+        <div className="p-3 bg-white flex justify-between items-center"
+          style={{ position: "sticky", bottom: 0 }}
         >
-          <SendIcon className="ms-0.5" />
-        </button>
-      </div>
+          <input
+            className="bg-gray-200"
+            style={{
+              width: "320px",
+              height: "40px",
+              borderRadius: "60px",
+              outline: "none",
+              paddingLeft: "10px",
+            }}
+            disabled={isInputDisabled}
+            type="text"
+            placeholder="Type here..."
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
+          />
+          <button
+            className="ms-4 p-5 rounded-full flex items-center justify-center bg-black cursor-pointer"
+            style={{
+              border: "1px solid",
+              height: "30px",
+              width: "30px",
+              color: "white",
+            }}
+            disabled={isInputDisabled}
+            onClick={handleSendMessage}
+          >
+            <SendIcon className="ms-0.5" />
+          </button>
+        </div>
+      </>)}
+
     </div>
 
 

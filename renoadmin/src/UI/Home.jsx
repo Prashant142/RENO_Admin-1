@@ -44,7 +44,6 @@ import SuspendedMarketUser from "../Pages/MarketPlaceManagement/SuspendUsers/sus
 import AllMarketProducts from "../Pages/MarketPlaceManagement/AllProducts/Allproducts";
 import ListingManagement from "../Pages/MarketPlaceManagement/ListingManagement/listingManagement";
 import ReviewMPM from "../Pages/MarketPlaceManagement/ReviewManagement/reviewManagement";
-import AllChats from "../Pages/MarketPlaceManagement/AllChats/allchats";
 import ProjectBooking from "../Pages/PSM/ProjectBookings/projectBookings";
 import CreateUser from "../Pages/User_Management/Create_User/createUser";
 import EditPage from "../Pages/Content_Management/EditPage/editPage";
@@ -438,16 +437,6 @@ function Home() {
               path="/addProduct"
               element={
                 <AddProduct
-                  setExpand={togleExpand}
-                  setActiveTab={handleActiveTab}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/chatsAndDeals"
-              element={
-                <AllChats
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

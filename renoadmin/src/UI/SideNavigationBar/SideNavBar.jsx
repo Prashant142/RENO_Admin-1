@@ -199,7 +199,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink 
+              <NavLink
                 style={{
                   color: expand === "showcaseManagement" ? "green" : "#545e6f",
                   fontWeight:
@@ -288,7 +288,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div>
 
             <div className="mt-4 text-gray-500 text-xs">
-              <NavLink 
+              <NavLink
                 style={{
                   color: expand === "homeService" ? "green" : "#545e6f",
 
@@ -622,22 +622,6 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setExpand("marketPlace");
                       }}>
                       Listing Management
-                    </NavLink>
-                  </div>
-                  <div className="ml-7 mt-2">
-                    <NavLink
-                      style={{
-                        color:
-                          activeTab === "chatsAndDeals" ? "black" : "#545e6f",
-                        fontWeight:
-                          activeTab === "chatsAndDeals" ? "bold" : "inherit",
-                      }}
-                      to="/home/chatsAndDeals"
-                      onClick={() => {
-                        setActiveTab("chatsAndDeals");
-                        setExpand("marketPlace");
-                      }}>
-                      All Chats and Deals
                     </NavLink>
                   </div>
                   <div className="ml-7 mt-2">

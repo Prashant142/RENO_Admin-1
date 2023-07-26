@@ -14,7 +14,7 @@ import cookie from "js-cookie";
 
 const PopupComponent = ({ onClose, name, status, tid }) => {
   return (
-    <Chatdetails onClose={onClose} name={name} status={status} tid={tid} />
+    <Chatdetails onClose={onClose} page='helpDesk' name={name} status={status} tid={tid} />
   );
 };
 

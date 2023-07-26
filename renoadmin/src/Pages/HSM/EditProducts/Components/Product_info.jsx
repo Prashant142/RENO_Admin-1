@@ -28,7 +28,7 @@ const Product_info = () => {
   }, [])
   return (
     <div>
-      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border w-[80vh]">
+      <div className="bg-[#EEEEEE] p-5 rounded-md drop-shadow-md border">
         <p className="pb-5">Product Information</p>
         <hr />
         <form className="pt-5" action="submit">
