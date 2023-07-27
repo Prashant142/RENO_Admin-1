@@ -87,23 +87,25 @@ const InputField = () => {
             <div className="flex justify-between">
               <div className="font-bold">Internal Note</div>
               <div>
-                {log.timeAdded} / {log.dateAdded}
+                {log.dateAdded}&ensp;{log.timeAdded}
               </div>
             </div>
-            <div className="flex justify-between">
+            <div className="flex-between">
               <div className="mt-2">{log.note}</div>
-              <div className="rounded-full self-start ms-auto mt-2 bg-white shadow px-4 py-2 w-fit flex"> {log.senderName} <div className="bg-red-500 text-sm text-white px-2 ms-1 self-start rounded-full">{log.senderRole}</div></div>
             </div>
-            {log.file && (
-              <div className="mt-4">
-                <div className="font-bold">Attached File:</div>
-                <embed
-                  src={log.file}
-                  alt="Attached File"
-                  className="mt-2 max-w-xs"
-                />
-              </div>
-            )}
+            <div className="flex-between flex">
+              {log.file && (
+                <div className="mt-4">
+                  <div className="font-bold">Attached File:</div>
+                  <embed
+                    src={log.file}
+                    alt="Attached File"
+                    className="mt-2 max-w-xs"
+                  />
+                </div>
+              )}
+              <div className="rounded-full self-end ms-auto mt-2 bg-white shadow px-4 py-2 w-fit flex"> {log.senderName} <div className="bg-red-500 text-sm text-white px-2 ms-1 self-start rounded-full">{log.senderRole}</div></div>
+            </div>
           </div>
         ))}
       </div>

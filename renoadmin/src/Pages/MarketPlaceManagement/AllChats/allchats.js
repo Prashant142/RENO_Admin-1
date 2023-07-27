@@ -20,7 +20,20 @@ const Action = ({ dealId, dealName }) => {
   const handleDeleteClick = () => {
     setShowDeleteConfirmation(true);
   };
-
+  const productCategory = [
+    "Electrical",
+    "Plumbing",
+    "Air con service",
+    "Handyman Services",
+    "Carpentry Services",
+    "Tiling Works",
+    "Ceiling and Partition work",
+    "Painting Works",
+    "Aluminium and metal work",
+    "Vinyl Flooring",
+    "Glass Works",
+    "Dismantling and Disposal",
+  ];
   const handleConfirmDelete = () => {
     dispatch(DeleteDeal(dealId))
       .then(() => {
@@ -152,14 +165,27 @@ const AllChats = () => {
 
   // Number of Pages to be display on a single page.
   const pageSize = 4;
-
+  const productCategory = [
+    "Electrical",
+    "Plumbing",
+    "Air con service",
+    "Handyman Services",
+    "Carpentry Services",
+    "Tiling Works",
+    "Ceiling and Partition work",
+    "Painting Works",
+    "Aluminium and metal work",
+    "Vinyl Flooring",
+    "Glass Works",
+    "Dismantling and Disposal",
+  ];
   return (
     <div className="  ml-72 mt-10 w-[75vw] relative">
       {chatData.length > 0 ? (
-        <Table columns={columns} data={data} pageSize={pageSize} />
+        <Table columns={columns} data={data} pageSize={pageSize} catgoryFilter={productCategory} />
       ) : (
         <>
-          <Table columns={columns} data={data} pageSize={pageSize} />
+          <Table columns={columns} data={data} pageSize={pageSize} catgoryFilter={productCategory} />
           <div className="flex ml-5 justify-center w-full mt-40">
             <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>
           </div>

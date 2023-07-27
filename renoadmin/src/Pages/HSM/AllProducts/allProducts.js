@@ -170,7 +170,7 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
       />
     ),
   }));
-
+  const cat = productData.map((user) => ({ category: user.fields.category }));
   const blackButtonText = "Export All";
   const greenButtonText = "Add New Product";
 
@@ -208,6 +208,7 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
               </a>
             }
             greenButtonText={greenButtonText}
+            catgoryFilter='true'
             greenClicked={greenClicked}
           />
         ) : (
@@ -222,6 +223,7 @@ const AllProduct = ({ setActiveTab, setExpand }) => {
                 </a>
               }
               greenButtonText={greenButtonText}
+              catgoryFilter='true'
               greenClicked={greenClicked}
             />
             <div className="flex ml-5 justify-center w-full mt-40">

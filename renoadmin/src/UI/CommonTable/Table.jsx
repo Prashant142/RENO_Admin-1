@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import search from "./Assets/search.png";
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
 
 function Table({
   columns,
@@ -9,6 +16,7 @@ function Table({
   blackButtonText,
   blackClicked,
   greenClicked,
+  catgoryFilter,
 }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +26,44 @@ function Table({
       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
+  const ITEM_HEIGHT = 38;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 150,
+      },
+    },
+  };
+
+  const productCategory = [
+    "Electrical",
+    "Plumbing",
+    "Air con service",
+    "Handyman Services",
+    "Carpentry Services",
+    "Tiling Works",
+    "Ceiling and Partition work",
+    "Painting Works",
+    "Aluminium and metal work",
+    "Vinyl Flooring",
+    "Glass Works",
+    "Dismantling and Disposal",
+  ];
+  const names = productCategory;
+
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
 
   const paginatedData = pageSize
     ? filteredData.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
@@ -55,7 +101,7 @@ function Table({
               className="absolute top-3 right-3 pointer-events-auto"
             />
           </div>
-          <div className="flex flex-row gap-6">
+          <div className="flex flex-row gap-4 items-center">
             {blackButtonText && (
               <div>
                 <button
@@ -72,6 +118,30 @@ function Table({
                   className="bg-[#8FC743] rounded hover:bg-lime-700 text-white w-auto font-bold py-3 px-8 rounded-sm">
                   {greenButtonText}
                 </button>
+              </div>
+            )}
+            {catgoryFilter && (
+              <div>
+                <FormControl sx={{ m: 1, width: 300 }}>
+                  <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+                  <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={personName}
+                    onChange={handleChange}
+                    input={<OutlinedInput label="Tag" />}
+                    renderValue={(selected) => selected.join(', ')}
+                    MenuProps={MenuProps}
+                  >
+                    {names.map((name) => (
+                      <MenuItem key={name} value={name}>
+                        <Checkbox checked={personName.indexOf(name) > -1} />
+                        <ListItemText primary={name} />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
             )}
           </div>

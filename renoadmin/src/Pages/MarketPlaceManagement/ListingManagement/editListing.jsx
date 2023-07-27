@@ -117,7 +117,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
               Price
               <input
                 id="label"
-                class="outline-none w-[49vh] rounded"
+                class="outline-none rounded"
                 placeholder="$000.00"
                 style={{
                   height: "50px",
@@ -136,7 +136,7 @@ const EditListing = ({ setExpand, setActiveTab }) => {
               <select
                 id="label"
                 name="label"
-                className="outline-none w-[50vh] rounded mt-5"
+                className="outline-none  rounded mt-5"
                 style={{
                   height: "50px",
                   paddingLeft: "5px",
@@ -153,7 +153,10 @@ const EditListing = ({ setExpand, setActiveTab }) => {
                 })}
               </select>
             </label>
-            <label className="grid w-[49vh]">
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mt-5">
+            <label className="grid">
               Service Photos
               <input
                 style={{
@@ -163,34 +166,51 @@ const EditListing = ({ setExpand, setActiveTab }) => {
                   marginTop: "5px",
                   fontSize: "14px",
                 }}
-                class="file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+                class="file:bg-black  file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
                 type="file"
                 accept="image/*"
-                multiple
+                multiple='true'
                 onChange={handlePhotoUpload}
                 placeholder=""
                 required
               />
             </label>
-            <div style={{ marginLeft: "50px", width: "600px" }}>
-              {images && images.length > 0 && (
-                <div className="grid grid-cols-4 gap-3">
-                  {images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={URL.createObjectURL(image)} // replace with your image source
-                      alt={image.name} // replace with your image alt text
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        objectFit: "cover",
-                        marginRight: "10px",
-                      }} // set width, height, object-fit, and margin-right styles
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+            <label className="grid">
+              Seller Name
+              <input
+                id="label"
+                class="outline-none rounded"
+                placeholder="Name"
+                style={{
+                  height: "50px",
+                  paddingLeft: "5px",
+                  backgroundColor: "#e5ecff",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}
+                value='Alex'
+                required
+              />
+            </label>
+          </div>
+          <div style={{ marginLeft: "50px", width: "600px" }}>
+            {images && images.length > 0 && (
+              <div className="grid grid-cols-4 gap-3">
+                {images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(image)} // replace with your image source
+                    alt={image.name} // replace with your image alt text
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      objectFit: "cover",
+                      marginRight: "10px",
+                    }} // set width, height, object-fit, and margin-right styles
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           <label className="grid mt-5">
