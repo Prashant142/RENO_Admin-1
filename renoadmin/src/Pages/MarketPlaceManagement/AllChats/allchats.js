@@ -182,10 +182,10 @@ const AllChats = () => {
   return (
     <div className="  ml-72 mt-10 w-[75vw] relative">
       {chatData.length > 0 ? (
-        <Table columns={columns} data={data} pageSize={pageSize} catgoryFilter={productCategory} />
+        <Table columns={columns} data={data} pageSize={pageSize} />
       ) : (
         <>
-          <Table columns={columns} data={data} pageSize={pageSize} catgoryFilter={productCategory} />
+          <Table columns={columns} data={data} pageSize={pageSize} />
           <div className="flex ml-5 justify-center w-full mt-40">
             <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>
           </div>

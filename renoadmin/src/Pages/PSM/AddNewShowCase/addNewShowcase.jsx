@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import DisabledByDefaultRoundedIcon from "@mui/icons-material/DisabledByDefaultRounded";
+
 const AddNewShowcase = ({ setExpand, setActiveTab }) => {
   // setExpand("showcaseManagement");
   setActiveTab("projectList");
@@ -38,12 +40,20 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
   };
 
   const handleImageUpload = (event) => {
-    const files = event.target.files;
     const uploadedImages = [];
+    const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       uploadedImages.push(files[i]);
     }
     setImages(uploadedImages);
+  };
+
+  const handleRemoveImage = (index) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
+
+    // fileInputRef.current.value = newImages.length;
   };
 
   const handleUserTypeChange = (event) => {
@@ -72,7 +82,7 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
       </div>
 
       <div
-        className=" ml-80 mb-10 w-[100vh] relative"
+        className=" ml-80 mb-10 relative"
         style={{ marginTop: "120px" }}
       >
         <form onSubmit={handleSubmit}>
@@ -82,7 +92,7 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
               type="text"
               placeholder="Enter Title"
               id="title"
-              className="rounded w-[100vh] outline-none"
+              className="rounded outline-none"
               style={{
                 height: "50px",
                 // width: "1210px",
@@ -103,7 +113,7 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
               <select
                 id="label"
                 name="label"
-                class="outline-none w-[50vh] rounded"
+                class="outline-none  rounded"
                 style={{
                   height: "50px",
                   // width: "590px",
@@ -124,7 +134,14 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
             <label className="grid pl-6">
               Project Rate
               <div className="flex flex-row">
-                <select>
+                <select style={{
+                  height: "50px",
+                  // width: "586px",
+                  paddingLeft: "10px",
+                  border: "2px solid 	#e6f7fe",
+                  marginTop: "5px",
+                  fontSize: "14px",
+                }}>
                   <option value="$">$</option>
                   <option value="€">€</option>
                   <option value="£">£</option>
@@ -132,7 +149,7 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
                 <input
                   type="number"
                   value={rate}
-                  className="outline-none w-[50vh] rounded"
+                  className="outline-none  rounded"
                   placeholder="000.00"
                   style={{
                     height: "50px",
@@ -148,43 +165,56 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
               </div>
             </label>
 
-          {/* <div> */}
+            {/* <div> */}
             <label className="grid mt-5" style={{ fontSize: "15px" }}>
-              Upload Photos
+              Main Photo
               <input
-                className="w-[50vh] file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+                className=" file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
                 style={{ border: "2px solid #e6f7fe" }}
                 type="file"
                 placeholder=""
                 accept="image/*"
-                multiple
                 onChange={handleImageUpload}
                 required
-                />
+              />
             </label>
-            <label style={{marginTop:"7.5vh", marginLeft:"4vh"}}>
-              <FormControlLabel
-                control={<Checkbox  />}
-                label="Featured Status"
-                />
+            <label className="grid mt-5" style={{ fontSize: "15px" }}>
+              Slider Photos
+              <input
+                className=" file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+                style={{ border: "2px solid #e6f7fe" }}
+                type="file"
+                placeholder=""
+                accept="image/*"
+                onChange={handleImageUpload}
+                required
+                multiple
+              />
             </label>
-          {/* </div> */}
-                </div>
+            {/* </div> */}
+          </div>
           <div style={{ width: "600px", marginTop: "10px" }}>
             {images && images.length > 0 && (
               <div className="grid grid-cols-6 gap-2">
                 {images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={URL.createObjectURL(image)} // replace with your image source
-                    alt={image.name} // replace with your image alt text
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      objectFit: "cover",
-                      marginRight: "10px",
-                    }} // set width, height, object-fit, and margin-right styles
-                  />
+                  <div key={index} className="relative">
+                    <img
+                      src={URL.createObjectURL(image)} // replace with your image source
+                      alt={image.name} // replace with your image alt text
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        marginRight: "10px",
+                      }} // set width, height, object-fit, and margin-right styles
+                    />
+                    <button
+                      className="absolute top-0 text-white"
+                      style={{ right: 5 }}
+                      onClick={() => handleRemoveImage(index)}>
+                      <DisabledByDefaultRoundedIcon style={{ fill: "red" }} />
+                    </button>
+                  </div>
                 ))}
               </div>
             )}
@@ -207,7 +237,7 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
             <textarea
               id="content"
               placeholder="Enter Details"
-              className="rounded outline-none w-[100vh] pt-2"
+              className="rounded outline-none pt-2"
               style={{
                 height: "170px",
                 // width: "1210px",
@@ -223,6 +253,119 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
             />
           </label>
           {/* <div> */}
+          <label className="grid mt-5">
+            Project Subtitle
+            <input
+              type="text"
+              placeholder="Enter Title"
+              id="sub-title"
+              className="rounded outline-none"
+              style={{
+                height: "50px",
+                // width: "1210px",
+                paddingLeft: "10px",
+                border: "2px solid 	#e6f7fe",
+                marginTop: "5px",
+                fontSize: "15px",
+              }}
+              // value={subTitle}
+              onChange={(event) => setTitle(event.target.value)}
+              required
+            />
+          </label>
+          <label className="grid mt-5">
+            Project Description
+            <textarea
+              id="content"
+              placeholder="Enter Details"
+              className="rounded outline-none pt-2"
+              style={{
+                height: "170px",
+                // width: "1210px",
+                border: "2px solid #e6f7fe",
+                paddingLeft: "10px",
+                paddingTop: "20px",
+                fontSize: "15px",
+                marginTop: "5px",
+              }}
+              // value={content}
+              onChange={(event) => setContent(event.target.value)}
+              required
+            />
+          </label>
+          <label className="grid mt-5">
+            Project Sub Description
+            <textarea
+              id="content"
+              placeholder="Enter Details"
+              className="rounded outline-none pt-2"
+              style={{
+                height: "170px",
+                // width: "1210px",
+                border: "2px solid #e6f7fe",
+                paddingLeft: "10px",
+                paddingTop: "20px",
+                fontSize: "15px",
+                marginTop: "5px",
+              }}
+              // value={content}
+              onChange={(event) => setContent(event.target.value)}
+              required
+            />
+          </label>
+          {/* <div> */}
+          <label className="grid mt-5" style={{ fontSize: "15px" }}>
+            Sub Slider Photos
+            <input
+              className=" file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+              style={{ border: "2px solid #e6f7fe" }}
+              type="file"
+              placeholder=""
+              accept="image/*"
+              onChange={handleImageUpload}
+              required
+              multiple
+            />
+          </label>
+          <label className="grid mt-5" style={{ fontSize: "15px" }}>
+            Quatation Photo
+            <input
+              className=" file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent"
+              style={{ border: "2px solid #e6f7fe" }}
+              type="file"
+              placeholder=""
+              accept="image/*"
+              onChange={handleImageUpload}
+              required
+            />
+          </label>
+          {/* </div> */}
+          <div style={{ width: "600px", marginTop: "10px" }}>
+            {images && images.length > 0 && (
+              <div className="grid grid-cols-6 gap-2">
+                {images.map((image, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={URL.createObjectURL(image)} // replace with your image source
+                      alt={image.name} // replace with your image alt text
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        marginRight: "10px",
+                      }} // set width, height, object-fit, and margin-right styles
+                    />
+                    <button
+                      className="absolute top-0 text-white"
+                      style={{ right: 5 }}
+                      onClick={() => handleRemoveImage(index)}>
+                      <DisabledByDefaultRoundedIcon style={{ fill: "red" }} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <button
             className="rounded mt-10 bg-lime-600 hover:bg-lime-700 "
             style={{
@@ -260,8 +403,8 @@ const AddNewShowcase = ({ setExpand, setActiveTab }) => {
           </button>
         </form>
         {/* </div> */}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

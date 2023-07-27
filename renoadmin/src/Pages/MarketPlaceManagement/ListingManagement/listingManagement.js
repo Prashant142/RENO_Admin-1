@@ -105,7 +105,20 @@ const ListingData = ({ setActiveTab, setExpand }) => {
     };
     fetchUserData();
   }, [dispatch]);
-
+  const productCategory = [
+    "Electrical",
+    "Plumbing",
+    "Air con service",
+    "Handyman Services",
+    "Carpentry Services",
+    "Tiling Works",
+    "Ceiling and Partition work",
+    "Painting Works",
+    "Aluminium and metal work",
+    "Vinyl Flooring",
+    "Glass Works",
+    "Dismantling and Disposal",
+  ];
   const columns = [
     {
       header: "Photo",
@@ -174,6 +187,7 @@ const ListingData = ({ setActiveTab, setExpand }) => {
             columns={columns}
             data={data}
             pageSize={pageSize}
+            catgoryFilter={productCategory}
           />
         ) : (
           <>
@@ -181,6 +195,7 @@ const ListingData = ({ setActiveTab, setExpand }) => {
               columns={columns}
               data={data}
               pageSize={pageSize}
+              catgoryFilter={productCategory}
             />
             <div className="flex ml-5 justify-center w-full mt-40">
               <h2 className="text-4xl font-bold text-gray-500">No Data!</h2>

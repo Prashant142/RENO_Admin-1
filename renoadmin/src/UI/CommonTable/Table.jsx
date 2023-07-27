@@ -7,6 +7,10 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { IconButton, Button } from "@mui/material";
+import Modal from '@mui/material/Modal';
+
 
 function Table({
   columns,
@@ -64,7 +68,9 @@ function Table({
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
+  const handleClearSelection = () => {
+    setPersonName([]);
+  };
   const paginatedData = pageSize
     ? filteredData.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
     : filteredData;
@@ -83,9 +89,71 @@ function Table({
     setSearchTerm(event.target.value);
     setCurrentPage(0);
   };
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '30rem',
+    boxShadow: 24,
+    borderRadius: '20px',
+    backgroundColor: 'white',
+    padding: '15px 30px'
+  };
   return (
     <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+
+      >
+        <div style={style}>
+          <h2 style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            textAlign: 'center',
+          }} className="text-gray-900">Amount</h2>
+          <div className="my-3">
+            <FormControl className="w-full">
+              <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                multiple
+                value={personName}
+                onChange={handleChange}
+                input={<OutlinedInput label="Select Catagory" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+              >
+                {names.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={personName.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <div className="flex justify-between mt-4">
+              <div>
+                <Button onClick={handleClearSelection} variant="contained" size="large" color="error">
+                  Clear
+                </Button>
+              </div>
+              <div>
+                <Button onClick={handleClose} variant="contained" size="large" color="success">
+                  Apply
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal >
       <div className="p-5 table-container">
         <div className="flex justify-between items-center mb-5">
           <div className="w-1/3 relative">
@@ -102,6 +170,13 @@ function Table({
             />
           </div>
           <div className="flex flex-row gap-4 items-center">
+            {catgoryFilter && (
+              <div>
+                <IconButton color="success" onClick={handleOpen} size="large">
+                  <FilterAltIcon />
+                </IconButton>
+              </div>
+            )}
             {blackButtonText && (
               <div>
                 <button
@@ -118,30 +193,6 @@ function Table({
                   className="bg-[#8FC743] rounded hover:bg-lime-700 text-white w-auto font-bold py-3 px-8 rounded-sm">
                   {greenButtonText}
                 </button>
-              </div>
-            )}
-            {catgoryFilter && (
-              <div>
-                <FormControl sx={{ m: 1, width: 300 }}>
-                  <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
-                  <Select
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    value={personName}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Tag" />}
-                    renderValue={(selected) => selected.join(', ')}
-                    MenuProps={MenuProps}
-                  >
-                    {names.map((name) => (
-                      <MenuItem key={name} value={name}>
-                        <Checkbox checked={personName.indexOf(name) > -1} />
-                        <ListItemText primary={name} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
               </div>
             )}
           </div>

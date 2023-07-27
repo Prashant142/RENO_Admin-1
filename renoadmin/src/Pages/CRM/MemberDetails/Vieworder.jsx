@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import TopHeader from "../../../UI/TopHeader/TopHeader";
 
 const Vieworder = () => {
+  const [selectedOption1, setSelectedOption1] = useState("");
+
+  const handleOptionChange1 = (e) => {
+    setSelectedOption1(e.target.value);
+  };
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
   };
-
   const deliveryOptions = [
     "Pending",
     "Confirmed",
@@ -33,8 +37,8 @@ const Vieworder = () => {
                 <div className="mt-2">
                   <select
                     id="select"
-                    value={selectedOption}
-                    onChange={handleOptionChange}
+                    value={selectedOption1}
+                    onChange={handleOptionChange1}
                     className="w-full px-4 py-2 border rounded focus:outline-none "
                   >
                     <option value="paid">Paid</option>
@@ -67,9 +71,9 @@ const Vieworder = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="flex items-center justify-center">
-                <button className="bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold mt-5" style={{ height:"5vh", width:"15vh", color:"white"}}>Update</button>
+                <button className="bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold mt-5" style={{ height: "5vh", width: "15vh", color: "white" }}>Update</button>
               </div>
             </div>
           </form>
